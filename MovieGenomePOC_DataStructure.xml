@@ -1,0 +1,1769 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE base SYSTEM "http://www.4d.com/dtd/2007/base.dtd" >
+<base name="MovieGenomePOC" uuid="D07689AB6E4A4A4CBD8F3A9A18784964" collation_locale="en">
+	<schema name="DEFAULT_SCHEMA"/>
+	<table name="SampleTable" uuid="C1EA1F0E16414F4D981247E2D9BE7FDD" id="1" prevent_journaling="true">
+		<field name="RecordID" uuid="136695A713B28340A810989590D6BEB4" type="4" unique="true" autosequence="true" not_null="true" id="1">
+			<index_ref uuid="4537068C14A56F4EBB23EDD36FEDF8C4"/>
+			<field_extra mandatory="true" modifiable="false" enterable="false"/>
+		</field>
+		<field name="CreationDate" uuid="89CF95B335D2EA45BF498F7773FA5CE6" type="8" not_null="true" id="2">
+			<index_ref uuid="8256BE0C55B06D41933F9EF138080746"/>
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="LastUpdateDate" uuid="BEFB9A4A20C5524BA9B080E90956536B" type="8" not_null="true" id="3">
+			<index_ref uuid="720B3A9A49C28B4CB210016D62D0A7AE"/>
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="TimeStamp" uuid="6DE9946E2A336849956A4E2173E6DEEF" type="10" not_null="true" never_null="true" id="4">
+			<index_ref uuid="12799B8C9DAEF34FA4CFF57F36B3A891"/>
+			<index_ref uuid="F0198658D792BB4F95CC9D46224E0345"/>
+			<field_extra mandatory="true"/>
+		</field>
+		<primary_key field_name="RecordID" field_uuid="136695A713B28340A810989590D6BEB4"/>
+		<table_extra>
+			<editor_table_info displayable_fields_count="6">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="0" top="0" width="120" height="168"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="GenomeMap" uuid="C91FC4F9F8C9004DA9ACA36FF0E51E68" id="2">
+		<field name="GeneId" uuid="27D9C7F14DB4F548B79A90BA4ACE5A84" type="4" unique="true" autosequence="true" not_null="true" id="1">
+			<index_ref uuid="A173EF710CFDE34CA0AADE2CFE74BEA0"/>
+			<field_extra mandatory="true">
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Unique identifier of each gene or descriptor}				</comment>
+				<comment format="text">Unique identifier of each gene or descriptor				</comment>
+			</field_extra>
+		</field>
+		<field name="Vector" uuid="C180E17867586C49A58151612B497AAA" type="10" limiting_length="10" unique="true" not_null="true" id="2">
+			<index_ref uuid="4DB1CC5D6C7F9843A8228FD89CE4CABD"/>
+			<field_extra mandatory="true" multi_line="false">
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Vector which the gene belongs to. Pre-defined list: GMM_GeneVectors.}				</comment>
+				<comment format="text">Vector which the gene belongs to. Pre-defined list: GMM_GeneVectors.				</comment>
+				<editor_field_info>
+					<color red="255" green="255" blue="255" alpha="0"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="CreationDate" uuid="E1FEC0A25BB1E24A91C4971D11E83D30" type="8" not_null="true" id="3">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="LastUpdateDate" uuid="501DCBD906F302459F424AE1ED34872B" type="8" not_null="true" id="4">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="TimeStamp" uuid="ADC344040AEB0B41B95E6A02D783EA27" type="10" not_null="true" never_null="true" id="5">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="Cluster" uuid="4FCA2BBC4339AF449BEE60591F9574AC" type="10" limiting_length="50" not_null="true" id="6">
+			<index_ref uuid="A2F55765BA3669478DC9C61E0B5B0A59"/>
+			<field_extra mandatory="true">
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Subgroup which the gene is subscribed to. Pre-defined list: GMM_GeneClusters }				</comment>
+				<comment format="text">Subgroup which the gene is subscribed to. Pre-defined list: GMM_GeneClusters 				</comment>
+			</field_extra>
+		</field>
+		<field name="Coordinate" uuid="C234B620A370724E97FA8427E81D0E83" type="3" not_null="true" id="7">
+			<field_extra mandatory="true">
+				<tip>Position of the gene in the vector				</tip>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Position of the gene in the vector}				</comment>
+				<comment format="text">Position of the gene in the vector				</comment>
+			</field_extra>
+		</field>
+		<field name="GeneName" uuid="CB283EA8BD0BF84FAD1C87446CE9B321" type="10" limiting_length="50" unique="true" not_null="true" id="8">
+			<index_ref uuid="0695690ABA5EC84B83EB86F08601B465"/>
+			<field_extra multi_line="false" mandatory="true">
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Name of the gene as described in the Movie Genome Curator Guide (MG-FD-001)}				</comment>
+				<comment format="text">Name of the gene as described in the Movie Genome Curator Guide (MG-FD-001)				</comment>
+				<editor_field_info>
+					<color red="255" green="255" blue="255" alpha="0"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<field name="GeneDescription" uuid="6F19764B3B37D649A8607FF7996851FF" type="10" never_null="true" id="9">
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Full description of the gene, including the selection criteria as described in the Movie Genome Curator Guide (MG-FD-001)}				</comment>
+				<comment format="text">Full description of the gene, including the selection criteria as described in the Movie Genome Curator Guide (MG-FD-001)				</comment>
+			</field_extra>
+		</field>
+		<field name="AvailableInUI" uuid="B88D2473B95A3E4B9140C9915F751348" type="10" limiting_length="1" id="10">
+			<index_ref uuid="37A4D1966CFD3043869F8AAAA32DB568"/>
+		</field>
+		<field name="UIName" uuid="F85D4A230860934FB1BDF8FA21EE1C62" type="10" limiting_length="50" unique="true" never_null="true" id="11">
+			<index_ref uuid="B9F7891B2F8691449516B70550E367E0"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Name as it must be displayed through the UI}				</comment>
+				<comment format="text">Name as it must be displayed through the UI				</comment>
+			</field_extra>
+		</field>
+		<field name="UIDescription" uuid="F690CE11E77A144C9B0FD8860A7C07B9" type="10" limiting_length="255" never_null="true" id="12">
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Description as it must be displayed in the UI}				</comment>
+				<comment format="text">Description as it must be displayed in the UI				</comment>
+			</field_extra>
+		</field>
+		<field name="UIGroup" uuid="52E8B98C9F85DE4595736DCB817C8D3D" type="10" limiting_length="255" never_null="true" id="13">
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Group or tab where it can be displayed in UI. Use Pre-defined list: SYS_UIGeneGroups}				</comment>
+				<comment format="text">Group or tab where it can be displayed in UI. Use Pre-defined list: SYS_UIGeneGroups				</comment>
+			</field_extra>
+		</field>
+		<field name="AcceptedValuesList" uuid="7DD1BD3BA3FA504E92DDC8DE20816130" type="10" limiting_length="255" not_null="true" id="14">
+			<field_extra mandatory="true">
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Parameter Name that holds the list of accepted values for the gene.}				</comment>
+				<comment format="text">Parameter Name that holds the list of accepted values for the gene.				</comment>
+			</field_extra>
+		</field>
+		<field name="DTPRequired" uuid="893A963D8371054D8B4521DD5845ECF5" type="10" limiting_length="1" id="15">
+			<field_extra multi_line="false">
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Indicator that the gene must have already been included in the taste profile for so that the latter can be used by the MGLE. (0,1). Default = 0}				</comment>
+				<comment format="text">Indicator that the gene must have already been included in the taste profile for so that the latter can be used by the MGLE. (0,1). Default = 0				</comment>
+				<editor_field_info>
+					<color red="255" green="255" blue="255" alpha="0"/>
+				</editor_field_info>
+			</field_extra>
+		</field>
+		<primary_key field_name="GeneId" field_uuid="27D9C7F14DB4F548B79A90BA4ACE5A84"/>
+		<table_extra>
+			<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Table containing all the descriptors or genes contemplated by the Movie Genome Conceptual Map}			</comment>
+			<comment format="text">Table containing all the descriptors or genes contemplated by the Movie Genome Conceptual Map			</comment>
+			<editor_table_info displayable_fields_count="15">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="166" top="59" width="160" height="365"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="ContentProfile" uuid="569CDBF13A8C6D4DB8A19AED449B0D90" id="3" prevent_journaling="true">
+		<field name="RecordID" uuid="80908D1575D1D141854C511FC8897927" type="4" unique="true" autosequence="true" not_null="true" id="1">
+			<index_ref uuid="651BB22B9C54EC47BDCE3EC791EE2810"/>
+			<field_extra enterable="false" modifiable="false" mandatory="true"/>
+		</field>
+		<field name="CreationDate" uuid="1FD9E892AACF154682AD33823BB95606" type="8" not_null="true" id="2">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="LastUpdateDate" uuid="A09C04574504534B83E95AFFA2160303" type="8" not_null="true" id="3">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="TimeStamp" uuid="1A41BA536B309940AD2E69C7E3A3FA0C" type="10" not_null="true" never_null="true" id="4">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="FeatureID" uuid="FBAFA4ED094C9E4ABE425E4A5F6BC5B7" type="4" never_null="true" id="5">
+			<index_ref uuid="587F39827177D74E8E38F9D55771D1BE"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Parent Feature if the gene belongs to a feature}				</comment>
+				<comment format="text">Parent Feature if the gene belongs to a feature				</comment>
+			</field_extra>
+		</field>
+		<field name="SeasonID" uuid="FE55909A5449124B980081E590CBE06D" type="4" never_null="true" id="6">
+			<index_ref uuid="DCA76171E9CEA94F8C4D13A38627D7C0"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Parent Season, if the gene belongs to a season}				</comment>
+				<comment format="text">Parent Season, if the gene belongs to a season				</comment>
+			</field_extra>
+		</field>
+		<field name="SeriesID" uuid="1DD0040C6C24424386876E1A3F8D21E4" type="4" never_null="true" id="7">
+			<index_ref uuid="B7A1B60A5D6C414C9B424D99005B46FB"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Parent Series if the gene belongs to a series}				</comment>
+				<comment format="text">Parent Series if the gene belongs to a series				</comment>
+			</field_extra>
+		</field>
+		<field name="GeneID" uuid="C7CD1713760C624CABBD83F2582D7899" type="4" not_null="true" id="8">
+			<index_ref uuid="03A3C0EDE9C1EA4BAE6913D3644E1CB6"/>
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="CuratorID" uuid="3DD18D0B7066954184AA0D12CE48FB2C" type="4" not_null="true" id="9">
+			<index_ref uuid="468D92B649A1AB408E6945B151851AEE"/>
+			<field_extra mandatory="true">
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 UserID of the curator who identified the gene in the parent content.}				</comment>
+				<comment format="text">UserID of the curator who identified the gene in the parent content.				</comment>
+			</field_extra>
+		</field>
+		<field name="CoordinateValue" uuid="06F129C8B7B51A42924BE535F621E57B" type="10" limiting_length="1" not_null="true" id="10">
+			<index_ref uuid="B87DA47173358D47BA148DF08D602275"/>
+			<field_extra mandatory="true">
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Value assigned to the gene by the curator. Accepted values (0, 1 thru 5)}				</comment>
+				<comment format="text">Value assigned to the gene by the curator. Accepted values (0, 1 thru 5)				</comment>
+			</field_extra>
+		</field>
+		<primary_key field_name="RecordID" field_uuid="80908D1575D1D141854C511FC8897927"/>
+		<table_extra>
+			<editor_table_info displayable_fields_count="10">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="518" top="395" width="166" height="260"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="Series" uuid="F9FD3C63B425194DA8FF706A66A53AA9" id="4" prevent_journaling="true">
+		<field name="SeriesId" uuid="B9F5CF7EDFFC9D4A98C80A9D6275812B" type="4" unique="true" autosequence="true" not_null="true" id="1">
+			<index_ref uuid="CD19DF15C5C986468FC51F22AF07C07F"/>
+			<field_extra enterable="false" modifiable="false" mandatory="true"/>
+		</field>
+		<field name="CreationDate" uuid="0084658C2A3DA0408D2009C7740EFACB" type="8" not_null="true" id="2">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="LastUpdateDate" uuid="F08601CEDD159347BC8F86E0BD171336" type="8" not_null="true" id="3">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="TimeStamp" uuid="8AB2EA9574428E4EA8BE016170958F98" type="10" not_null="true" never_null="true" id="4">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="IMDBID" uuid="93EECDE73CE61344A34151044DCB42C7" type="10" limiting_length="64" never_null="true" id="5">
+			<index_ref uuid="F333880326E77248B5CB4D00545A7313"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Internet Movie Database ID}				</comment>
+				<comment format="text">Internet Movie Database ID				</comment>
+			</field_extra>
+		</field>
+		<field name="IMDBTitle" uuid="2F3DB842EBB3B6478E1BC67E96A3B086" type="10" limiting_length="100" not_null="true" id="6">
+			<index_ref uuid="4FBE24323C0EAA4CBD31D1FD76DB58AD"/>
+			<index_ref uuid="8CB0D933359B6B4DB0477E46AD2AAE84"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Internet Movie Database Title}				</comment>
+				<comment format="text">Internet Movie Database Title				</comment>
+			</field_extra>
+		</field>
+		<field name="ProdYear" uuid="4887B3F52042864998AE6BC61E3C59F9" type="3" not_null="true" id="7">
+			<index_ref uuid="3056DA8B85081B4C8851021252F49039"/>
+			<field_extra>
+				<tip>Year of production				</tip>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Year of production}				</comment>
+				<comment format="text">Year of production				</comment>
+			</field_extra>
+		</field>
+		<field name="ProductionTitle" uuid="A0E10CAB3494714796F4E1515E143CCD" type="10" limiting_length="100" id="8">
+			<index_ref uuid="7DD74B9316C889428A0482820A36399D"/>
+			<index_ref uuid="E2787A85F7990040B9C2EAD9A6A36EEE"/>
+			<field_extra>
+				<tip>Title in Original Language				</tip>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Title in Original Language}				</comment>
+				<comment format="text">Title in Original Language				</comment>
+			</field_extra>
+		</field>
+		<field name="ThemeVector" uuid="9BE03C65F0052F4E8C8C82F1D4C8D19D" type="4" id="9">
+			<index_ref uuid="7AA98A90B205574A9A3BA61D176C30BF"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Numeric value composed of 1 control digit and the coordinate values of each theme gene identified for the series}				</comment>
+				<comment format="text">Numeric value composed of 1 control digit and the coordinate values of each theme gene identified for the series				</comment>
+			</field_extra>
+		</field>
+		<field name="NarrativeVector" uuid="B08F66BBED50B04C899ED87A8E2BF79A" type="4" id="10">
+			<index_ref uuid="36AE00E7FBBEAF498024BE3D6BF4C5A2"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Numeric value composed of 1 control digit and the coordinate values of each narrative gene identified for the series. Indexed, Calculated based on the related content genes belonging to the narrative vector}				</comment>
+				<comment format="text">Numeric value composed of 1 control digit and the coordinate values of each narrative gene identified for the series. Indexed, Calculated based on the related content genes belonging to the narrative vector				</comment>
+			</field_extra>
+		</field>
+		<field name="ContentVector" uuid="5D00C08770308049B80C6BCE19CE06D0" type="4" never_null="true" id="11">
+			<index_ref uuid="FB462D52DBD84C43AC9304DD00EE910A"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Numeric value composed of 1 control digit and the coordinate values of each content gene identified for the series. Indexed, Calculated based on the related content genes belonging to the content vector}				</comment>
+				<comment format="text">Numeric value composed of 1 control digit and the coordinate values of each content gene identified for the series. Indexed, Calculated based on the related content genes belonging to the content vector				</comment>
+			</field_extra>
+		</field>
+		<field name="ExecutionVector" uuid="3D7285379B34CB469CF8F1D926A1DCE4" type="4" id="12">
+			<index_ref uuid="CFCED8C4659AF9488E9BD181F17A676D"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Numeric value composed of 1 control digit and the coordinate values of each execution gene identified for the series. Indexed, Calculated based on the related content genes belonging to the execution vector}				</comment>
+				<comment format="text">Numeric value composed of 1 control digit and the coordinate values of each execution gene identified for the series. Indexed, Calculated based on the related content genes belonging to the execution vector				</comment>
+			</field_extra>
+		</field>
+		<field name="StyleVector" uuid="765457642F9E334BAF909CD68B79CCD6" type="10" limiting_length="255" id="13">
+			<index_ref uuid="91DE005DBF3CBE46837956C5188BF56A"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Numeric value composed of 1 control digit and the coordinate values of each style gene identified for the series. Calculated based on the related content genes belonging to the style vector}				</comment>
+				<comment format="text">Numeric value composed of 1 control digit and the coordinate values of each style gene identified for the series. Calculated based on the related content genes belonging to the style vector				</comment>
+			</field_extra>
+		</field>
+		<primary_key field_name="SeriesId" field_uuid="B9F5CF7EDFFC9D4A98C80A9D6275812B"/>
+		<table_extra>
+			<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Higher grouping level of episodic content. A series is composed of Seasons}			</comment>
+			<comment format="text">Higher grouping level of episodic content. A series is composed of Seasons			</comment>
+			<editor_table_info displayable_fields_count="14">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="462" top="0" width="158" height="336"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="Seasons" uuid="F0B5B6FC21C3B14888D902E3E7974495" id="5" prevent_journaling="true">
+		<field name="SeasonId" uuid="56DF99C838772B44AC63402F6B839178" type="4" unique="true" autosequence="true" not_null="true" id="1">
+			<index_ref uuid="B79D21D7CD6E1A4C9BF3E94B90F574F3"/>
+			<field_extra enterable="false" modifiable="false" mandatory="true"/>
+		</field>
+		<field name="IMDBID" uuid="E88FF2466F6D8E4DB44742A9347873D0" type="10" limiting_length="64" never_null="true" id="2">
+			<index_ref uuid="CA3152EB5226CF479BF7AC845CA1DFF4"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Internet Movie Database ID}				</comment>
+				<comment format="text">Internet Movie Database ID				</comment>
+			</field_extra>
+		</field>
+		<field name="IMDBTitle" uuid="6696D1269B22CB459526E392F3C212E3" type="10" limiting_length="100" not_null="true" id="3">
+			<index_ref uuid="D3E756B8E63D0B45B351FCF425E6F30F"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Internet Movie Database Title}				</comment>
+				<comment format="text">Internet Movie Database Title				</comment>
+			</field_extra>
+		</field>
+		<field name="ProdYear" uuid="B81C46C8C7D938478C95448872660667" type="3" not_null="true" id="4">
+			<index_ref uuid="7292726D80870947BF2F815A32244246"/>
+			<field_extra>
+				<tip>Year of production				</tip>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Year of production}				</comment>
+				<comment format="text">Year of production				</comment>
+			</field_extra>
+		</field>
+		<field name="ProductionTitle" uuid="8C43C3CAEE321649AE327F246EA07B1D" type="10" limiting_length="100" id="5">
+			<index_ref uuid="9F86F97E5ADE8043A2C8EC9CE5FC5478"/>
+			<field_extra>
+				<tip>Title in Original Language				</tip>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Title in Original Language}				</comment>
+				<comment format="text">Title in Original Language				</comment>
+			</field_extra>
+		</field>
+		<field name="ThemeVector" uuid="C8293BAC76D3064CA143EA8C2374354C" type="4" id="6">
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Numeric value composed of 1 control digit and the coordinate values of each theme gene identified for the series}				</comment>
+				<comment format="text">Numeric value composed of 1 control digit and the coordinate values of each theme gene identified for the series				</comment>
+			</field_extra>
+		</field>
+		<field name="NarrativeVector" uuid="6705FF9512EBFE469DFBCE1616EFF682" type="4" id="7">
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Numeric value composed of 1 control digit and the coordinate values of each narrative gene identified for the series. Indexed, Calculated based on the related content genes belonging to the narrative vector}				</comment>
+				<comment format="text">Numeric value composed of 1 control digit and the coordinate values of each narrative gene identified for the series. Indexed, Calculated based on the related content genes belonging to the narrative vector				</comment>
+			</field_extra>
+		</field>
+		<field name="ContentVector" uuid="67B7AADDD473FA4F800E570B9C169602" type="4" never_null="true" id="8">
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Numeric value composed of 1 control digit and the coordinate values of each content gene identified for the series. Indexed, Calculated based on the related content genes belonging to the content vector}				</comment>
+				<comment format="text">Numeric value composed of 1 control digit and the coordinate values of each content gene identified for the series. Indexed, Calculated based on the related content genes belonging to the content vector				</comment>
+			</field_extra>
+		</field>
+		<field name="ExecutionVector" uuid="B38E50E29B55A045A939E1AA10621706" type="4" id="9">
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Numeric value composed of 1 control digit and the coordinate values of each execution gene identified for the series. Indexed, Calculated based on the related content genes belonging to the execution vector}				</comment>
+				<comment format="text">Numeric value composed of 1 control digit and the coordinate values of each execution gene identified for the series. Indexed, Calculated based on the related content genes belonging to the execution vector				</comment>
+			</field_extra>
+		</field>
+		<field name="StyleVector" uuid="9552367741BC47488F2A331D4819F5A2" type="10" limiting_length="255" id="10">
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Numeric value composed of 1 control digit and the coordinate values of each style gene identified for the series. Calculated based on the related content genes belonging to the style vector}				</comment>
+				<comment format="text">Numeric value composed of 1 control digit and the coordinate values of each style gene identified for the series. Calculated based on the related content genes belonging to the style vector				</comment>
+			</field_extra>
+		</field>
+		<field name="CreationDate" uuid="EBF28A9B9674354FB1E2A9BBA8966842" type="8" not_null="true" id="11">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="LastUpdateDate" uuid="F011DF780A554B4DB1AC54ED0C280B50" type="8" not_null="true" id="12">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="TimeStamp" uuid="0E8B6A371CB01A45A5760BAD6976CE3C" type="10" not_null="true" never_null="true" id="13">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="SeasonNumber" uuid="3F89DE12EF16D840BA669D9920E8FECC" type="3" not_null="true" id="14">
+			<field_extra mandatory="true">
+				<tip>Season release order				</tip>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Season release order}				</comment>
+				<comment format="text">Season release order				</comment>
+			</field_extra>
+		</field>
+		<field name="SeasonNumForDisplay" uuid="C2B2F6C14C82A443815B83A157BD85DE" type="10" limiting_length="10" never_null="true" id="15">
+			<field_extra>
+				<tip>Distribution Season Number				</tip>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Season number as advertised. (i.e. Breaking Bad last season was split into two parts, thus season number were reported as 5-1 and 5-2)}				</comment>
+				<comment format="text">Season number as advertised. (i.e. Breaking Bad last season was split into two parts, thus season number were reported as 5-1 and 5-2)				</comment>
+			</field_extra>
+		</field>
+		<field name="SeriesID" uuid="D24EAE43B28EB643840F5CC8A6A26FC6" type="4" never_null="true" id="16">
+			<index_ref uuid="BE981DF47402124A9B3FF18CC0F63709"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Parent series}				</comment>
+				<comment format="text">Parent series				</comment>
+			</field_extra>
+		</field>
+		<primary_key field_name="SeasonId" field_uuid="56DF99C838772B44AC63402F6B839178"/>
+		<table_extra>
+			<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Mid-grouping level of episodic content. A season is composed of episodes and belongs to a Series}			</comment>
+			<comment format="text">Mid-grouping level of episodic content. A season is composed of episodes and belongs to a Series			</comment>
+			<editor_table_info displayable_fields_count="15">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="724" top="0" width="160" height="377"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="Features" uuid="C838F85334D87A4BB70ECA42DD081627" id="6" prevent_journaling="true">
+		<field name="FeatureId" uuid="CF7B91F271968F4A8583DFE4BE7E6ABD" type="4" unique="true" autosequence="true" not_null="true" id="1">
+			<index_ref uuid="D4294949939E854280811498A2000CA1"/>
+			<field_extra enterable="false" modifiable="false" mandatory="true"/>
+		</field>
+		<field name="SeriesID" uuid="5C100ECA75E56D4086F3D152187D93F2" type="4" never_null="true" id="2">
+			<index_ref uuid="7F63E17AB4E2BF42B60F7E24CE70F226"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Parent Series if episodic.}				</comment>
+				<comment format="text">Parent Series if episodic.				</comment>
+			</field_extra>
+		</field>
+		<field name="IMDBID" uuid="56DFEF573E156646A0CC5332FD30364E" type="10" limiting_length="64" never_null="true" id="3">
+			<index_ref uuid="E0E9B1E773CF694685174EF1F76B7281"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Internet Movie Database ID}				</comment>
+				<comment format="text">Internet Movie Database ID				</comment>
+			</field_extra>
+		</field>
+		<field name="IMDBTitle" uuid="1F825AC32F0CF94CBAC9A3F0B1F15545" type="10" limiting_length="100" not_null="true" id="4">
+			<index_ref uuid="095E83F147292844B61C39FB35141B68"/>
+			<index_ref uuid="1CB4EE017486E043ADB4CEE634B1D856"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Internet Movie Database Title}				</comment>
+				<comment format="text">Internet Movie Database Title				</comment>
+			</field_extra>
+		</field>
+		<field name="ProdYear" uuid="EB5D223D953FEB408B569EAB2F44E584" type="3" not_null="true" id="5">
+			<index_ref uuid="2060BC5D9391974F87475D25640AA750"/>
+			<field_extra>
+				<tip>Year of production				</tip>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Year of production}				</comment>
+				<comment format="text">Year of production				</comment>
+			</field_extra>
+		</field>
+		<field name="ProductionTitle" uuid="75108E417465C94BA8157E9989FC2663" type="10" limiting_length="100" id="6">
+			<index_ref uuid="0302D88AC10E7D4FA1BFF1FA857645C7"/>
+			<index_ref uuid="E378BEC949D825489C55C19AD3C7E9D5"/>
+			<field_extra>
+				<tip>Title in Original Language				</tip>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Title in Original Language}				</comment>
+				<comment format="text">Title in Original Language				</comment>
+			</field_extra>
+		</field>
+		<field name="EpisodeNumber" uuid="6EA440478ED27A45B28C85B544553C17" type="3" never_null="true" id="7">
+			<field_extra>
+				<tip>Episode number within the season				</tip>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Episode order in the season if episodic}				</comment>
+				<comment format="text">Episode order in the season if episodic				</comment>
+			</field_extra>
+		</field>
+		<field name="ProdCompanyID" uuid="E70D8068C93E7A49896D292AF18084CB" type="4" never_null="true" id="8">
+			<index_ref uuid="83FB0F5E6C6E75449B55FD88FED6FE44"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Parent production company}				</comment>
+				<comment format="text">Parent production company				</comment>
+			</field_extra>
+		</field>
+		<field name="ThemeVector" uuid="663318EA0E1988478B20DCF16B65D17F" type="4" id="9">
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Numeric value composed of 1 control digit and the coordinate values of each theme gene identified for the series}				</comment>
+				<comment format="text">Numeric value composed of 1 control digit and the coordinate values of each theme gene identified for the series				</comment>
+			</field_extra>
+		</field>
+		<field name="NarrativeVector" uuid="BB31B87A33C277408CFD8ADB0297747C" type="4" id="10">
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Numeric value composed of 1 control digit and the coordinate values of each narrative gene identified for the series. Indexed, Calculated based on the related content genes belonging to the narrative vector}				</comment>
+				<comment format="text">Numeric value composed of 1 control digit and the coordinate values of each narrative gene identified for the series. Indexed, Calculated based on the related content genes belonging to the narrative vector				</comment>
+			</field_extra>
+		</field>
+		<field name="ContentVector" uuid="BC0CE717D6D55242866FA0C377F51A6B" type="4" never_null="true" id="11">
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Numeric value composed of 1 control digit and the coordinate values of each content gene identified for the series. Indexed, Calculated based on the related content genes belonging to the content vector}				</comment>
+				<comment format="text">Numeric value composed of 1 control digit and the coordinate values of each content gene identified for the series. Indexed, Calculated based on the related content genes belonging to the content vector				</comment>
+			</field_extra>
+		</field>
+		<field name="ExecutionVector" uuid="9B7D707464999543A9F104C22C9037E7" type="4" id="12">
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Numeric value composed of 1 control digit and the coordinate values of each execution gene identified for the series. Indexed, Calculated based on the related content genes belonging to the execution vector}				</comment>
+				<comment format="text">Numeric value composed of 1 control digit and the coordinate values of each execution gene identified for the series. Indexed, Calculated based on the related content genes belonging to the execution vector				</comment>
+			</field_extra>
+		</field>
+		<field name="StyleVector" uuid="06079C531B1FE240B0262A7D4567AA4A" type="10" limiting_length="255" id="13">
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Numeric value composed of 1 control digit and the coordinate values of each style gene identified for the series. Calculated based on the related content genes belonging to the style vector}				</comment>
+				<comment format="text">Numeric value composed of 1 control digit and the coordinate values of each style gene identified for the series. Calculated based on the related content genes belonging to the style vector				</comment>
+			</field_extra>
+		</field>
+		<field name="CreationDate" uuid="DECA330E4B9E4146A5C7626AB892427A" type="8" not_null="true" id="14">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="LastUpdateDate" uuid="C00AE795E5826240A7ECD8D35FB7694D" type="8" not_null="true" id="15">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="TimeStamp" uuid="06D5DBB3FE38394CA7EEAF9A4EF9C55A" type="10" not_null="true" never_null="true" id="16">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="SeasonID" uuid="B537AE112713F34A9890606EA39C48FE" type="4" never_null="true" id="17">
+			<index_ref uuid="F82B3C07D35CF6428BF9E6FC75873E77"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Parent season if episodic}				</comment>
+				<comment format="text">Parent season if episodic				</comment>
+			</field_extra>
+		</field>
+		<field name="DirectorsList" uuid="5F5FAC37AD3FFB4ABE5E948BE30A10A4" type="10" not_null="true" id="18">
+			<field_extra mandatory="true">
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 List of directors credited for the feature.  Semi-colon Separated}				</comment>
+				<comment format="text">List of directors credited for the feature.  Semi-colon Separated				</comment>
+			</field_extra>
+		</field>
+		<field name="FeatureCast" uuid="0B86B981D55E644D9EECFDE7ECD5984D" type="10" never_null="true" id="19">
+			<index_ref uuid="B0C0D768B00E0449905C205B3DE6A3B4"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 List of main actors credited for the feature. Semi-colon Separated}				</comment>
+				<comment format="text">List of main actors credited for the feature. Semi-colon Separated				</comment>
+			</field_extra>
+		</field>
+		<field name="isStarCentered" uuid="D2F9AAB789A8AE4DADE02512C752DAEF" type="10" limiting_length="1" never_null="true" id="20">
+			<field_extra>
+				<tip><![CDATA[Check if movie is made based on actor's typical role]]>				</tip>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Flag to indicate that the feature is typical of the features where a given actor, or celebrity plays an expected role. (0,1). Default value = 0}				</comment>
+				<comment format="text">Flag to indicate that the feature is typical of the features where a given actor, or celebrity plays an expected role. (0,1). Default value = 0				</comment>
+			</field_extra>
+		</field>
+		<field name="CensorshipRating" uuid="ADA39B58F8F6204EBC8328ED7884FF57" type="10" limiting_length="10" never_null="true" id="21">
+			<index_ref uuid="FB56301FDA39F945B70D82C02065F3EC"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Minimum Audience Age for recommended for the feature. Use pre-defined list: CCM_Censorship}				</comment>
+				<comment format="text">Minimum Audience Age for recommended for the feature. Use pre-defined list: CCM_Censorship				</comment>
+			</field_extra>
+		</field>
+		<field name="CountryOfOrigin" uuid="49BB77B95AC1EF438AB6B4CCEBCDABC7" type="10" limiting_length="255" never_null="true" id="22">
+			<index_ref uuid="3B4FDA77E1B73444996AC87EEBDA64B0"/>
+			<index_ref uuid="49A40B37F1BE8C4785C5203598D4BA0A"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 List of countries credited for the feature. Semi-colon separated. Use pre-defined list: SYS_ISOCountryCode}				</comment>
+				<comment format="text">List of countries credited for the feature. Semi-colon separated. Use pre-defined list: SYS_ISOCountryCode				</comment>
+			</field_extra>
+		</field>
+		<field name="OrigLanguages" uuid="5FED676C462A1B41BD5FDA4946E1721F" type="10" limiting_length="255" never_null="true" id="23">
+			<index_ref uuid="56A6C9F98C20CA41864B0D23A3780BE6"/>
+			<index_ref uuid="F6B4FB1406BCDD489FD7F49FDAFF3EEF"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Semi-colon separated. Use pre-defined list: SYS_ISOLanguageCode}				</comment>
+				<comment format="text">Semi-colon separated. Use pre-defined list: SYS_ISOLanguageCode				</comment>
+			</field_extra>
+		</field>
+		<primary_key field_name="FeatureId" field_uuid="CF7B91F271968F4A8583DFE4BE7E6ABD"/>
+		<table_extra>
+			<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Long form content that can be either episodic or non-episodic.}			</comment>
+			<comment format="text">Long form content that can be either episodic or non-episodic.			</comment>
+			<editor_table_info displayable_fields_count="23">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="1075" top="46" width="206" height="537"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="DescriptiveMetadata" uuid="EDC4828002111C43B000FE50268BB9B8" id="7" prevent_journaling="true">
+		<field name="RecordId" uuid="0601AB6F3DCC0946BD171BB8F0DA3EC2" type="4" unique="true" autosequence="true" not_null="true" id="1">
+			<index_ref uuid="8F3B8885668D3F4582BFC5E62827AABF"/>
+			<field_extra enterable="false" modifiable="false" mandatory="true"/>
+		</field>
+		<field name="SeasonID" uuid="824A67BD15233244A064EDACB3A22D17" type="4" never_null="true" id="2">
+			<index_ref uuid="5C5D37933FFFD145946F9A6DDCA4093E"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Parent season if episodic}				</comment>
+				<comment format="text">Parent season if episodic				</comment>
+			</field_extra>
+		</field>
+		<field name="SeriesID" uuid="0A9520DB1F9F52479C20E5018F70FB8B" type="4" never_null="true" id="3">
+			<index_ref uuid="E50BC38004E02443ADF898829A8EE544"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Parent Series if episodic.}				</comment>
+				<comment format="text">Parent Series if episodic.				</comment>
+			</field_extra>
+		</field>
+		<field name="Target" uuid="D441AD2CCC5DB4469160D3C25F080B62" type="10" limiting_length="20" not_null="true" id="4">
+			<index_ref uuid="2CE70A53B729C046AE43C4B9704B9E21"/>
+			<field_extra mandatory="true">
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Metadata target outlet. Use pre-defined list: CCM_MetadataTargets}				</comment>
+				<comment format="text">Metadata target outlet. Use pre-defined list: CCM_MetadataTargets				</comment>
+			</field_extra>
+		</field>
+		<field name="AbbrTitle" uuid="BEF233132A0F614DAA600ED2C42F2F85" type="10" limiting_length="100" never_null="true" id="5">
+			<index_ref uuid="A0EAFB0E4050694490A7F1C5260ECDCF"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Abbreviated title in the corresponding language}				</comment>
+				<comment format="text">Abbreviated title in the corresponding language				</comment>
+			</field_extra>
+		</field>
+		<field name="ShortTitle" uuid="28BF279D2934EA42A12FCF8127CFDB8A" type="10" limiting_length="100" never_null="true" id="6">
+			<index_ref uuid="057DE39E74690442A77C1728F0CDF719"/>
+			<index_ref uuid="D29FDCFB6651BE47816E7170AAEAE538"/>
+			<field_extra>
+				<tip>Short Title				</tip>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Short title in the corresponding language}				</comment>
+				<comment format="text">Short title in the corresponding language				</comment>
+			</field_extra>
+		</field>
+		<field name="LongTitle" uuid="8ABEB43E230F724DA5D056DBFC005BC1" type="10" limiting_length="100" never_null="true" id="7">
+			<index_ref uuid="912C16826F042B4AB3C14C05ADE2210C"/>
+			<field_extra>
+				<tip>Long Title				</tip>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Long title in the corresponding language}				</comment>
+				<comment format="text">Long title in the corresponding language				</comment>
+			</field_extra>
+		</field>
+		<field name="MarketTitle" uuid="1884112ECC72A847A8B65D8CE16F0754" type="10" limiting_length="100" never_null="true" id="8">
+			<index_ref uuid="AECCC18A60A7C846A966509CCA998773"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Title as marketed in the corresponding language}				</comment>
+				<comment format="text">Title as marketed in the corresponding language				</comment>
+			</field_extra>
+		</field>
+		<field name="Tagline" uuid="247D0E19A4B4B94ABCFFB2774895C64E" type="10" limiting_length="255" never_null="true" id="9">
+			<index_ref uuid="070E1AA77E73DC4AAE58677812C0863F"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Content promotional tag line}				</comment>
+				<comment format="text">Content promotional tag line				</comment>
+			</field_extra>
+		</field>
+		<field name="ShortSynopsis" uuid="0DC646725A291E42AA535DE1B2F4F121" type="10" never_null="true" id="10">
+			<index_ref uuid="42E58D4A05EC8A479EA5179650207223"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Short synopsis}				</comment>
+				<comment format="text">Short synopsis				</comment>
+			</field_extra>
+		</field>
+		<field name="LongSynopsis" uuid="3CD949738298284BBF0756C672A2FF32" type="10" never_null="true" id="11">
+			<index_ref uuid="4F52E0E69AFDDA47BFA55160658F635D"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Long synopsis}				</comment>
+				<comment format="text">Long synopsis				</comment>
+			</field_extra>
+		</field>
+		<field name="Genres" uuid="697DF060B744BA4D8030D97AD8486C9D" type="10" limiting_length="100" never_null="true" id="12">
+			<index_ref uuid="CE236C9B0E56B740BE45104D93BE1BE5"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 List of genres assigned to the content. Use pre-defined list CMM_Genres. Semi-colon separated}				</comment>
+				<comment format="text">List of genres assigned to the content. Use pre-defined list CMM_Genres. Semi-colon separated				</comment>
+			</field_extra>
+		</field>
+		<field name="CreationDate" uuid="C415AE504C951A4B81AB841872CBE7FB" type="8" not_null="true" id="20">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="LastUpdateDate" uuid="F36E5980F8F6F04CBF0FCD0493521B6E" type="8" not_null="true" id="21">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="TimeStamp" uuid="4C0A738CA62E004F910F1097DF4AD1FD" type="10" not_null="true" never_null="true" id="22">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="FeatureID" uuid="3804D4A11254784B89BA5F65BE8C0129" type="4" never_null="true" id="23">
+			<index_ref uuid="8545DFDEFC2616418B9D51169DA998D3"/>
+		</field>
+		<field name="MDLanguage" uuid="8DFE321A3D038744BCF4AA702ECD17EC" type="10" limiting_length="3" not_null="true" id="24">
+			<index_ref uuid="8AC73CE88676EB458E36CBE51B7F7AA8"/>
+			<field_extra mandatory="true">
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Metadata language. Use pre-defined list: SYS_ISOLanguageCode}				</comment>
+				<comment format="text">Metadata language. Use pre-defined list: SYS_ISOLanguageCode				</comment>
+			</field_extra>
+		</field>
+		<field name="MediumSynopsis" uuid="BEC04D9D9F47AE45920C4D3C9EFC0CFA" type="10" never_null="true" id="25">
+			<index_ref uuid="04EC70F9AAE4D64280D07C17F2EC3EC3"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Medium synopsis}				</comment>
+				<comment format="text">Medium synopsis				</comment>
+			</field_extra>
+		</field>
+		<primary_key field_name="RecordId" field_uuid="0601AB6F3DCC0946BD171BB8F0DA3EC2"/>
+		<table_extra>
+			<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 General Metadata that describes a given content and is customized for a given target and region. The metadata can be captured in multiple languages for a given target. The target is the outlet where the metadata is usually delivered (i.e., Setup boxes, OTT Services, Digital SVOD, EPG)}			</comment>
+			<comment format="text">General Metadata that describes a given content and is customized for a given target and region. The metadata can be captured in multiple languages for a given target. The target is the outlet where the metadata is usually delivered (i.e., Setup boxes, OTT Services, Digital SVOD, EPG)			</comment>
+			<editor_table_info displayable_fields_count="18">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="468" top="716" width="224" height="426"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="CensorshipRatings" uuid="70E1CD71E47DF544AFB8F51C6676AF8B" id="8" prevent_journaling="true">
+		<field name="RecordId" uuid="AA3C328CCB7C3049A13D919E5336FBB8" type="4" unique="true" autosequence="true" not_null="true" id="1">
+			<index_ref uuid="7F5BC4846EF61940AE3359CD7215B1CA"/>
+			<field_extra enterable="false" modifiable="false" mandatory="true"/>
+		</field>
+		<field name="FeatureID" uuid="8B2641B460EFCB4CA1681F90EBBBF313" type="4" never_null="true" id="2">
+			<index_ref uuid="450EEAE1D868B24F8B5F3A741B199B08"/>
+		</field>
+		<field name="SeasonID" uuid="86C910FE2D984D4DABAD5454568C95F5" type="4" never_null="true" id="3">
+			<index_ref uuid="E31A0BF5F163264EB9158378556EAF0C"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Parent season if episodic}				</comment>
+				<comment format="text">Parent season if episodic				</comment>
+			</field_extra>
+		</field>
+		<field name="SeriesID" uuid="D4839C88CE8E3F48B56DB285CC11EFBC" type="4" never_null="true" id="4">
+			<index_ref uuid="66B954A505891C49809F8EF67638F9B5"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Parent Series if episodic.}				</comment>
+				<comment format="text">Parent Series if episodic.				</comment>
+			</field_extra>
+		</field>
+		<field name="Region" uuid="81184FB69B4A4A4DAD867EE580E1CC0B" type="10" limiting_length="20" not_null="true" id="5">
+			<index_ref uuid="2D820A719DD54B43B4BFB4D05F863767"/>
+			<field_extra mandatory="true">
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Region or country where the censorship certificate applies to}				</comment>
+				<comment format="text">Region or country where the censorship certificate applies to				</comment>
+			</field_extra>
+		</field>
+		<field name="Rating" uuid="7C4F49533C2A2C4CBA6B752618E6F9F4" type="10" limiting_length="3" not_null="true" id="6">
+			<field_extra mandatory="true">
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Rating certificate. Use pre-defined list: CCM_ContentRatings}				</comment>
+				<comment format="text">Rating certificate. Use pre-defined list: CCM_ContentRatings				</comment>
+			</field_extra>
+		</field>
+		<field name="ContentDescriptors" uuid="0E21302FFAE9174DA8DBA5356DF960A4" type="10" limiting_length="100" never_null="true" id="13">
+			<index_ref uuid="CC1E5F786EB5A844A77CE259EDFF8B57"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 List of content descriptors that apply to the content for a specific region. Use pre-defined list: CCM_ContentDescriptors, Semi-colon separated list}				</comment>
+				<comment format="text">List of content descriptors that apply to the content for a specific region. Use pre-defined list: CCM_ContentDescriptors, Semi-colon separated list				</comment>
+			</field_extra>
+		</field>
+		<field name="CreationDate" uuid="CB005BDA87475D41903732FF686E3530" type="8" not_null="true" id="14">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="LastUpdateDate" uuid="593FBFD738C61144A96E87B51A602E0B" type="8" not_null="true" id="15">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="TimeStamp" uuid="C2A920F9F3C5C24A986333E9467D9753" type="10" not_null="true" never_null="true" id="16">
+			<field_extra mandatory="true"/>
+		</field>
+		<primary_key field_name="RecordId" field_uuid="AA3C328CCB7C3049A13D919E5336FBB8"/>
+		<table_extra>
+			<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Censorship certificate awarded to the content for a specific region. Series and Seasons may have a certificate of their own.\page}			</comment>
+			<comment format="text">Censorship certificate awarded to the content for a specific region. Series and Seasons may have a certificate of their own.			</comment>
+			<editor_table_info displayable_fields_count="11">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="798" top="552" width="227" height="278"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="FeatureCast" uuid="3E7FFA855145B0459041FE9677A7D598" id="9" prevent_journaling="true">
+		<field name="RecordID" uuid="43382256974CFB448E9DD23ACD201F75" type="4" unique="true" autosequence="true" not_null="true" id="1">
+			<index_ref uuid="3FB9F9FDD8BCEA4AA5D200977501C82B"/>
+			<field_extra enterable="false" modifiable="false" mandatory="true"/>
+		</field>
+		<field name="FeatureID" uuid="F3780176CEFDD24D85AB02281533BD1E" type="4" not_null="true" id="2">
+			<index_ref uuid="B7A98A1481209547929737ACED2E2E22"/>
+			<field_extra mandatory="true">
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Parent Feature}				</comment>
+				<comment format="text">Parent Feature				</comment>
+			</field_extra>
+		</field>
+		<field name="BillingOrder" uuid="05869C0DDAE3E249A6379437A43E4690" type="3" never_null="true" id="3">
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Order in which they actors have been billed for the production}				</comment>
+				<comment format="text">Order in which they actors have been billed for the production				</comment>
+			</field_extra>
+		</field>
+		<field name="IndexedFullName" uuid="AA18D22A1A4F8C4A94F4B84D44386502" type="10" limiting_length="100" never_null="true" id="4">
+			<index_ref uuid="C5B2B9B7F58D7E4A9758C5D0E74657C2"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 People\rquote s full name in the Last Name, Fist Name format}				</comment>
+				<comment format="text">People’s full name in the Last Name, Fist Name format				</comment>
+			</field_extra>
+		</field>
+		<field name="PeopleID" uuid="720602A92B77544691F55E0D3F8A09F9" type="4" not_null="true" id="5">
+			<index_ref uuid="0925404BFEB8914BA5A02DFF722E2499"/>
+			<field_extra mandatory="true">
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Parent person}				</comment>
+				<comment format="text">Parent person				</comment>
+			</field_extra>
+		</field>
+		<field name="NormalFullName" uuid="907D8DA1C249EF4187A5839C8F83B2A7" type="10" limiting_length="100" never_null="true" id="6">
+			<index_ref uuid="69336A89E629D94987C453BF5F8A31FF"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 People full names in the common format FirstName+LastName}				</comment>
+				<comment format="text">People full names in the common format FirstName+LastName				</comment>
+			</field_extra>
+		</field>
+		<field name="PersonRole" uuid="C6510625C0BB0A458911010D1BD689AD" type="10" limiting_length="1" not_null="true" id="7">
+			<field_extra mandatory="true">
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Code for the role played by the person in the movie. For instance: PA (Actor), PD (Director), etc. Use pre-defined list CCM_CastRoles}				</comment>
+				<comment format="text">Code for the role played by the person in the movie. For instance: PA (Actor), PD (Director), etc. Use pre-defined list CCM_CastRoles				</comment>
+			</field_extra>
+		</field>
+		<field name="CreationDate" uuid="4D7A93DD784A6E4A874A203A5D4A5B67" type="8" not_null="true" id="8">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="LastUpdateDate" uuid="7C0940CE75568D49A93B793472B21173" type="8" not_null="true" id="9">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="TimeStamp" uuid="98C5D3B8CCE6B5488BB5D2084DF2B68A" type="10" not_null="true" never_null="true" id="10">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="PlayedCharacter" uuid="40B7B96BE6285445B8F70F469E278F74" type="10" limiting_length="100" never_null="true" id="11">
+			<index_ref uuid="1FBD1F2932E64642B20F76AB19FC4058"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Name of the character played in the content}				</comment>
+				<comment format="text">Name of the character played in the content				</comment>
+			</field_extra>
+		</field>
+		<primary_key field_name="RecordID" field_uuid="43382256974CFB448E9DD23ACD201F75"/>
+		<table_extra>
+			<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 People that play a given role or participate in cinematographic content.}			</comment>
+			<comment format="text">People that play a given role or participate in cinematographic content.			</comment>
+			<editor_table_info displayable_fields_count="10">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="1347" top="415" width="166" height="260"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="ShellLists" uuid="F62A7F30C3511141AEFB92CA8E41C4F8" id="10" prevent_journaling="true">
+		<field name="RecordID" uuid="B820985FBB7D90409D76472B2CF7D079" type="4" unique="true" autosequence="true" not_null="true" id="1">
+			<field_extra enterable="false" modifiable="false" mandatory="true"/>
+		</field>
+		<field name="CreationDate" uuid="4DE8021322501148BC8D6F63BFD2D850" type="8" not_null="true" id="2">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="LastUpdateDate" uuid="98D7FD5258214C4EAAECB0497C05C76F" type="8" not_null="true" id="3">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="TimeStamp" uuid="27E400D09AEC3C4FBFF1327A22A51AAA" type="10" not_null="true" never_null="true" id="4">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="ListName" uuid="FD6DD1D085CC384A9978D5E33259FF67" type="10" limiting_length="50" never_null="true" id="5">
+			<index_ref uuid="9A0386659675BF4FB9642F367F2D9924"/>
+			<field_extra mandatory="true">
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 List name}				</comment>
+				<comment format="text">List name				</comment>
+			</field_extra>
+		</field>
+		<field name="ElementShortValue" uuid="126583395A843C4E8FD2123F9F395208" type="10" limiting_length="15" never_null="true" id="6">
+			<index_ref uuid="C7805BF87F18114A91A751DFB7E99387"/>
+			<field_extra mandatory="true">
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Element short value or item code}				</comment>
+				<comment format="text">Element short value or item code				</comment>
+			</field_extra>
+		</field>
+		<field name="ElementLongValue" uuid="B52BCD2507AF404A8D576743C328B60F" type="10" limiting_length="50" never_null="true" id="7">
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Element long name, usually used for display or UI selection purposes. For instance the Country name in a list of ISO codes}				</comment>
+				<comment format="text">Element long name, usually used for display or UI selection purposes. For instance the Country name in a list of ISO codes				</comment>
+			</field_extra>
+		</field>
+		<field name="ElementAltValue1" uuid="0D3BDB81FBBFBA46B324158151A9941A" type="10" limiting_length="15" never_null="true" id="8">
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Alternative values for multi-value lists such as ISO standards. For instance,, language codes can be 2-letters, 3-letters or numeric. But they all represent the same language}				</comment>
+				<comment format="text">Alternative values for multi-value lists such as ISO standards. For instance,, language codes can be 2-letters, 3-letters or numeric. But they all represent the same language				</comment>
+			</field_extra>
+		</field>
+		<field name="ElementAltValue2" uuid="3A99EDFA6BEC3B4D9A71FAD3DFF07321" type="10" limiting_length="255" never_null="true" id="9">
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Alternative value for multi-value lists such as ISO standards. For instance,, language codes can be 2-letters, 3-letters or numeric. But they all represent the same language}				</comment>
+				<comment format="text">Alternative value for multi-value lists such as ISO standards. For instance,, language codes can be 2-letters, 3-letters or numeric. But they all represent the same language				</comment>
+			</field_extra>
+		</field>
+		<field name="ElementMaxLen" uuid="12F94E854ED0904096E9309A7370AC9D" type="3" never_null="true" id="10"/>
+		<primary_key field_name="RecordID" field_uuid="B820985FBB7D90409D76472B2CF7D079"/>
+		<table_extra>
+			<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 System pre-defined lists}			</comment>
+			<comment format="text">System pre-defined lists			</comment>
+			<editor_table_info displayable_fields_count="10">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="93" top="468" width="197" height="260"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="ShellMappings" uuid="AC6218F8985C3646855E44AEBFC5384A" id="11" prevent_journaling="true">
+		<field name="RecordID" uuid="C8050F365655584E8E7B85055F34B3A1" type="4" unique="true" autosequence="true" not_null="true" id="1">
+			<index_ref uuid="1B96FF1804B4984A91907A03F6A3839C"/>
+			<field_extra enterable="false" modifiable="false" mandatory="true"/>
+		</field>
+		<field name="ExternalSystem" uuid="51A978DAB3B6294AA1DBDF58641FA8A0" type="10" limiting_length="20" not_null="true" id="2">
+			<index_ref uuid="0738D9597242974183E88A5486F08978"/>
+			<field_extra mandatory="true">
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 List name}				</comment>
+				<comment format="text">List name				</comment>
+			</field_extra>
+		</field>
+		<field name="Reference" uuid="B03CD6651D185E45A3FAAE4580C6CF90" type="10" limiting_length="20" not_null="true" id="3">
+			<index_ref uuid="6C63F9B4A33ADA48AF3E37B14FA83261"/>
+			<field_extra mandatory="true">
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Value reference, use to identified the concept being map. It can be a field name, a variable name, etc}				</comment>
+				<comment format="text">Value reference, use to identified the concept being map. It can be a field name, a variable name, etc				</comment>
+			</field_extra>
+		</field>
+		<field name="SubReference" uuid="AE55196243333444865535862474869C" type="10" limiting_length="20" never_null="true" id="4">
+			<index_ref uuid="FEBAB77C106A9447AF83D0F80A87EF15"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Additional reference to allow for further filtering}				</comment>
+				<comment format="text">Additional reference to allow for further filtering				</comment>
+			</field_extra>
+		</field>
+		<field name="ExternalValue" uuid="57E6DCE8B4002A4D9FA5EFE3A928EEEC" type="10" limiting_length="50" not_null="true" id="5">
+			<index_ref uuid="868DA8CC8402EB4389B7A01F055EFA76"/>
+			<field_extra mandatory="true">
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Value in the external system}				</comment>
+				<comment format="text">Value in the external system				</comment>
+			</field_extra>
+		</field>
+		<field name="MappedValue" uuid="D90AA0DD37F4794094E18C8F581BFD69" type="10" limiting_length="255" not_null="true" id="6">
+			<index_ref uuid="084A734ECC00134ABE0C079211C25948"/>
+			<field_extra mandatory="true">
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Value as used in the local system}				</comment>
+				<comment format="text">Value as used in the local system				</comment>
+			</field_extra>
+		</field>
+		<field name="CreationDate" uuid="74E6B1F9F22DB2418F81EDB5FB3D5630" type="8" not_null="true" id="8">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="LastUpdateDate" uuid="982C92B2BC4D764994A188062242057E" type="8" not_null="true" id="9">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="TimeStamp" uuid="A32164C27B9E434889250D904D87BA92" type="10" not_null="true" never_null="true" id="10">
+			<field_extra mandatory="true"/>
+		</field>
+		<primary_key field_name="RecordID" field_uuid="C8050F365655584E8E7B85055F34B3A1"/>
+		<table_extra>
+			<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Table for capturing value mappings between the local system and external systems.}			</comment>
+			<comment format="text">Table for capturing value mappings between the local system and external systems.			</comment>
+			<editor_table_info displayable_fields_count="9">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="75" top="816" width="231" height="239"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="People" uuid="8C5B0F45B1D8A249B4465EEEEFECA0C0" id="12" prevent_journaling="true">
+		<field name="PeopleID" uuid="29D8E708910240488925C7661D246326" type="4" unique="true" autosequence="true" not_null="true" id="1">
+			<index_ref uuid="F81BD6330E5B9347B62F449E79CBC61E"/>
+			<field_extra enterable="false" modifiable="false" mandatory="true">
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 PK}				</comment>
+				<comment format="text">PK				</comment>
+			</field_extra>
+		</field>
+		<field name="CreationDate" uuid="928DBD16166F454F85A0CAB7B5A79945" type="8" not_null="true" id="2">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="LastUpdateDate" uuid="9E74C8FFDE44B347827A75612D52644A" type="8" not_null="true" id="3">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="TimeStamp" uuid="DEAA13364FE5DF46AF11170CFB6AC52F" type="10" not_null="true" never_null="true" id="4">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="IMDBID" uuid="50FE97292334D84FA7BCAB6A47117491" type="10" limiting_length="32" not_null="true" id="5">
+			<index_ref uuid="705D7346B6878444A063FAD247293E46"/>
+			<field_extra mandatory="true">
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Internet Movie Database ID}				</comment>
+				<comment format="text">Internet Movie Database ID				</comment>
+			</field_extra>
+		</field>
+		<field name="FirstName" uuid="D6BE1CD232FDD34A9E75D6233AAFCB1D" type="10" limiting_length="255" never_null="true" id="6">
+			<index_ref uuid="3C39BAA05D38A941A0825D2D80402471"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Person First Name}				</comment>
+				<comment format="text">Person First Name				</comment>
+			</field_extra>
+		</field>
+		<field name="LastName" uuid="6E80D3301DB25045A53CA41BE27EB455" type="10" limiting_length="255" never_null="true" id="7">
+			<index_ref uuid="46D0CA50171BFA4F92235CFB70915E65"/>
+		</field>
+		<field name="DOB" uuid="0FFA4994D57A8F47A17909B5CD5AC750" type="8" never_null="true" id="8">
+			<index_ref uuid="90A6AF2EF6694845AFB5520AB3E2B3D7"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Date of Birth}				</comment>
+				<comment format="text">Date of Birth				</comment>
+			</field_extra>
+		</field>
+		<field name="DOD" uuid="5E5CC7E9AE60224EB1D4FA577210A785" type="8" never_null="true" id="9">
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Date of Decease}				</comment>
+				<comment format="text">Date of Decease				</comment>
+			</field_extra>
+		</field>
+		<field name="Awards" uuid="3A2D5F9C1A512049B35DAC2E6BC6DA52" type="10" limiting_length="255" never_null="true" id="10">
+			<index_ref uuid="0726B4A5C61EDA478EAAC19673B768FD"/>
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 List of codes of achieved Awards. Use pre-defined list SYS_Awards, Semi-colon separated}				</comment>
+				<comment format="text">List of codes of achieved Awards. Use pre-defined list SYS_Awards, Semi-colon separated				</comment>
+			</field_extra>
+		</field>
+		<field name="Biography" uuid="9B3FF9C94C596E40A1726DAF0EB7A8E5" type="10" limiting_length="255" never_null="true" id="11">
+			<field_extra>
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Short biography}				</comment>
+				<comment format="text">Short biography				</comment>
+			</field_extra>
+		</field>
+		<primary_key field_name="PeopleID" field_uuid="29D8E708910240488925C7661D246326"/>
+		<table_extra>
+			<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Actors, directors, and writers that participate in a cinematographic content}			</comment>
+			<comment format="text">Actors, directors, and writers that participate in a cinematographic content			</comment>
+			<editor_table_info displayable_fields_count="13">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="1572" top="411" width="262" height="329"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<table name="Companies" uuid="1C22734F40955346924CAF5BD37812A5" id="13" prevent_journaling="true">
+		<field name="CompanyID" uuid="200E8C53CA29B0498EBF313D4335FFCE" type="4" unique="true" autosequence="true" not_null="true" id="1">
+			<index_ref uuid="5FF63CD136573647AA99A44A295A4C27"/>
+			<field_extra enterable="false" modifiable="false" mandatory="true"/>
+		</field>
+		<field name="CreationDate" uuid="FF00CCC8FD9F7F4B938394458A7CDE75" type="8" not_null="true" id="2">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="LastUpdateDate" uuid="476A4FD585E88C4FABE6BFC8C1E53C96" type="8" not_null="true" id="3">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="TimeStamp" uuid="BBB6BAD011F74D4EAD87464073DA014C" type="10" not_null="true" never_null="true" id="4">
+			<field_extra mandatory="true"/>
+		</field>
+		<field name="ShortName" uuid="1580EB73DD69D54098E48DCC0F8AA265" type="10" limiting_length="50" not_null="true" id="5">
+			<index_ref uuid="93EC22F0AE42294ABAF9BFD39AC10FFB"/>
+			<field_extra mandatory="true">
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Short name to be used in reports and UI}				</comment>
+				<comment format="text">Short name to be used in reports and UI				</comment>
+			</field_extra>
+		</field>
+		<field name="LongName" uuid="7D2B2807BFEBC24A865CF2381E857B64" type="10" limiting_length="255" never_null="true" id="6"/>
+		<field name="CompanyRoles" uuid="CF7A708E6CF2C44AA9F2341AA233BD4A" type="10" limiting_length="100" not_null="true" id="7">
+			<index_ref uuid="A2E02A2806FE414ABC0546268E894BD3"/>
+			<field_extra mandatory="true">
+				<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 List of role codes assigned to a company. For instance: PRO (Producer), CLI (Client), etc. Semi-colon separated, Use pre-defined list SYS_CompanyRoles}				</comment>
+				<comment format="text">List of role codes assigned to a company. For instance: PRO (Producer), CLI (Client), etc. Semi-colon separated, Use pre-defined list SYS_CompanyRoles				</comment>
+			</field_extra>
+		</field>
+		<primary_key field_name="CompanyID" field_uuid="200E8C53CA29B0498EBF313D4335FFCE"/>
+		<table_extra>
+			<comment format="rtf">{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Gotham Book;}}{\colortbl ;\red0\green0\blue0;}{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\tx720\cf1\protect\f0\fs15 Companies master table}			</comment>
+			<comment format="text">Companies master table			</comment>
+			<editor_table_info displayable_fields_count="9">
+				<color red="255" green="255" blue="255" alpha="0"/>
+				<coordinates left="1372" top="85" width="181" height="238"/>
+			</editor_table_info>
+		</table_extra>
+	</table>
+	<relation uuid="0F3BBA6A70671B49905873650C460FC4" name_Nto1="ParentGene" name_1toN="GeneContent" auto_load_Nto1="false" auto_load_1toN="false" foreign_key="false" state="1" integrity="delete">
+		<related_field kind="source">
+			<field_ref uuid="C7CD1713760C624CABBD83F2582D7899" name="GeneID">
+				<table_ref uuid="569CDBF13A8C6D4DB8A19AED449B0D90" name="ContentProfile"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="27D9C7F14DB4F548B79A90BA4ACE5A84" name="GeneId">
+				<table_ref uuid="C91FC4F9F8C9004DA9ACA36FF0E51E68" name="GenomeMap"/>
+			</field_ref>
+		</related_field>
+		<relation_extra entry_wildchar="true" entry_create="false" choice_field="1" entry_autofill="false">
+			<editor_relation_info via_point_x="-1" via_point_y="-1" prefers_left="true" smartlink="true">
+				<color red="255" green="255" blue="255" alpha="0"/>
+			</editor_relation_info>
+		</relation_extra>
+	</relation>
+	<relation uuid="6A263DD82C2A53428BD92E4137633326" name_Nto1="ParentSeries" name_1toN="SeriesSeasons" auto_load_Nto1="false" auto_load_1toN="false" foreign_key="false" state="1">
+		<related_field kind="source">
+			<field_ref uuid="D24EAE43B28EB643840F5CC8A6A26FC6" name="SeriesID">
+				<table_ref uuid="F0B5B6FC21C3B14888D902E3E7974495" name="Seasons"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="B9F5CF7EDFFC9D4A98C80A9D6275812B" name="SeriesId">
+				<table_ref uuid="F9FD3C63B425194DA8FF706A66A53AA9" name="Series"/>
+			</field_ref>
+		</related_field>
+		<relation_extra entry_wildchar="false" entry_create="false" choice_field="0" entry_autofill="false">
+			<editor_relation_info via_point_x="-1" via_point_y="-1" prefers_left="true" smartlink="true">
+				<color red="255" green="255" blue="255" alpha="0"/>
+			</editor_relation_info>
+		</relation_extra>
+	</relation>
+	<relation uuid="784D9F4DF5B4CC4DBB72A347A09479B5" name_Nto1="EpisodeSeason" name_1toN="SeasonEpisodes" auto_load_Nto1="false" auto_load_1toN="false" foreign_key="false" state="1">
+		<related_field kind="source">
+			<field_ref uuid="B537AE112713F34A9890606EA39C48FE" name="SeasonID">
+				<table_ref uuid="C838F85334D87A4BB70ECA42DD081627" name="Features"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="56DF99C838772B44AC63402F6B839178" name="SeasonId">
+				<table_ref uuid="F0B5B6FC21C3B14888D902E3E7974495" name="Seasons"/>
+			</field_ref>
+		</related_field>
+		<relation_extra entry_wildchar="false" entry_create="false" choice_field="0" entry_autofill="false">
+			<editor_relation_info via_point_x="-1" via_point_y="-1" prefers_left="true" smartlink="true">
+				<color red="255" green="255" blue="255" alpha="0"/>
+			</editor_relation_info>
+		</relation_extra>
+	</relation>
+	<relation uuid="924FA41C8B167649A32D7E38960EAF99" name_Nto1="ParentFeature" name_1toN="FeatureGenes" auto_load_Nto1="false" auto_load_1toN="false" foreign_key="false" state="1">
+		<related_field kind="source">
+			<field_ref uuid="FBAFA4ED094C9E4ABE425E4A5F6BC5B7" name="FeatureID">
+				<table_ref uuid="569CDBF13A8C6D4DB8A19AED449B0D90" name="ContentProfile"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="CF7B91F271968F4A8583DFE4BE7E6ABD" name="FeatureId">
+				<table_ref uuid="C838F85334D87A4BB70ECA42DD081627" name="Features"/>
+			</field_ref>
+		</related_field>
+		<relation_extra entry_wildchar="false" entry_create="false" choice_field="0" entry_autofill="false">
+			<editor_relation_info via_point_x="-1" via_point_y="-1" prefers_left="false" smartlink="true">
+				<color red="255" green="255" blue="255" alpha="0"/>
+			</editor_relation_info>
+		</relation_extra>
+	</relation>
+	<relation uuid="FD1E61DC0C850F48A9D8F0261512FDB3" name_Nto1="GeneSeason" name_1toN="SeasonProfile" auto_load_Nto1="false" auto_load_1toN="false" foreign_key="false" state="1">
+		<related_field kind="source">
+			<field_ref uuid="FE55909A5449124B980081E590CBE06D" name="SeasonID">
+				<table_ref uuid="569CDBF13A8C6D4DB8A19AED449B0D90" name="ContentProfile"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="56DF99C838772B44AC63402F6B839178" name="SeasonId">
+				<table_ref uuid="F0B5B6FC21C3B14888D902E3E7974495" name="Seasons"/>
+			</field_ref>
+		</related_field>
+		<relation_extra entry_wildchar="false" entry_create="false" choice_field="0" entry_autofill="false">
+			<editor_relation_info via_point_x="-1" via_point_y="-1" prefers_left="false" smartlink="true">
+				<color red="255" green="255" blue="255" alpha="0"/>
+			</editor_relation_info>
+		</relation_extra>
+	</relation>
+	<relation uuid="992985E865165D4BB6FBED5468EA174C" name_Nto1="GeneSeries" name_1toN="SeriesProfile" auto_load_Nto1="false" auto_load_1toN="false" foreign_key="false" state="1">
+		<related_field kind="source">
+			<field_ref uuid="1DD0040C6C24424386876E1A3F8D21E4" name="SeriesID">
+				<table_ref uuid="569CDBF13A8C6D4DB8A19AED449B0D90" name="ContentProfile"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="B9F5CF7EDFFC9D4A98C80A9D6275812B" name="SeriesId">
+				<table_ref uuid="F9FD3C63B425194DA8FF706A66A53AA9" name="Series"/>
+			</field_ref>
+		</related_field>
+		<relation_extra entry_wildchar="false" entry_create="false" choice_field="0" entry_autofill="false">
+			<editor_relation_info via_point_x="-1" via_point_y="-1" prefers_left="false" smartlink="true">
+				<color red="255" green="255" blue="255" alpha="0"/>
+			</editor_relation_info>
+		</relation_extra>
+	</relation>
+	<relation uuid="B3C80407366A3B4FA4D647594813255F" name_Nto1="MDFeature" name_1toN="FeatureMetaData" auto_load_Nto1="false" auto_load_1toN="false" foreign_key="false" state="1">
+		<related_field kind="source">
+			<field_ref uuid="3804D4A11254784B89BA5F65BE8C0129" name="FeatureID">
+				<table_ref uuid="EDC4828002111C43B000FE50268BB9B8" name="DescriptiveMetadata"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="CF7B91F271968F4A8583DFE4BE7E6ABD" name="FeatureId">
+				<table_ref uuid="C838F85334D87A4BB70ECA42DD081627" name="Features"/>
+			</field_ref>
+		</related_field>
+		<relation_extra entry_wildchar="false" entry_create="false" choice_field="0" entry_autofill="false">
+			<editor_relation_info via_point_x="-1" via_point_y="-1" prefers_left="false" smartlink="true">
+				<color red="255" green="255" blue="255" alpha="0"/>
+			</editor_relation_info>
+		</relation_extra>
+	</relation>
+	<relation uuid="5B682ABE728E804886EABEC912774F60" name_Nto1="MDSeason" name_1toN="SeasonMetaData" auto_load_Nto1="false" auto_load_1toN="false" foreign_key="false" state="1">
+		<related_field kind="source">
+			<field_ref uuid="824A67BD15233244A064EDACB3A22D17" name="SeasonID">
+				<table_ref uuid="EDC4828002111C43B000FE50268BB9B8" name="DescriptiveMetadata"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="56DF99C838772B44AC63402F6B839178" name="SeasonId">
+				<table_ref uuid="F0B5B6FC21C3B14888D902E3E7974495" name="Seasons"/>
+			</field_ref>
+		</related_field>
+		<relation_extra entry_wildchar="false" entry_create="false" choice_field="0" entry_autofill="false">
+			<editor_relation_info via_point_x="-1" via_point_y="-1" prefers_left="true" smartlink="true">
+				<color red="255" green="255" blue="255" alpha="0"/>
+			</editor_relation_info>
+		</relation_extra>
+	</relation>
+	<relation uuid="F451647110C69C41B5D005D1044C8EE2" name_Nto1="MDSeries" name_1toN="SeriesMetadata" auto_load_Nto1="false" auto_load_1toN="false" foreign_key="false" state="1">
+		<related_field kind="source">
+			<field_ref uuid="0A9520DB1F9F52479C20E5018F70FB8B" name="SeriesID">
+				<table_ref uuid="EDC4828002111C43B000FE50268BB9B8" name="DescriptiveMetadata"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="B9F5CF7EDFFC9D4A98C80A9D6275812B" name="SeriesId">
+				<table_ref uuid="F9FD3C63B425194DA8FF706A66A53AA9" name="Series"/>
+			</field_ref>
+		</related_field>
+		<relation_extra entry_wildchar="false" entry_create="false" choice_field="0" entry_autofill="false">
+			<editor_relation_info via_point_x="-1" via_point_y="-1" prefers_left="true" smartlink="true">
+				<color red="255" green="255" blue="255" alpha="0"/>
+			</editor_relation_info>
+		</relation_extra>
+	</relation>
+	<relation uuid="49AB5C3A8CFD4A44839023CF265F4CC3" name_Nto1="RatingFeature" name_1toN="FeatureRatings" auto_load_Nto1="false" auto_load_1toN="false" foreign_key="false" state="1">
+		<related_field kind="source">
+			<field_ref uuid="8B2641B460EFCB4CA1681F90EBBBF313" name="FeatureID">
+				<table_ref uuid="70E1CD71E47DF544AFB8F51C6676AF8B" name="CensorshipRatings"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="CF7B91F271968F4A8583DFE4BE7E6ABD" name="FeatureId">
+				<table_ref uuid="C838F85334D87A4BB70ECA42DD081627" name="Features"/>
+			</field_ref>
+		</related_field>
+		<relation_extra entry_wildchar="false" entry_create="false" choice_field="0" entry_autofill="false">
+			<editor_relation_info via_point_x="-1" via_point_y="-1" prefers_left="false" smartlink="true">
+				<color red="255" green="255" blue="255" alpha="0"/>
+			</editor_relation_info>
+		</relation_extra>
+	</relation>
+	<relation uuid="6838DD34276AFA46A5058E7A28AB6636" name_Nto1="RatingsSeason" name_1toN="Link_14_return" auto_load_Nto1="false" auto_load_1toN="false" foreign_key="false" state="1">
+		<related_field kind="source">
+			<field_ref uuid="86C910FE2D984D4DABAD5454568C95F5" name="SeasonID">
+				<table_ref uuid="70E1CD71E47DF544AFB8F51C6676AF8B" name="CensorshipRatings"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="56DF99C838772B44AC63402F6B839178" name="SeasonId">
+				<table_ref uuid="F0B5B6FC21C3B14888D902E3E7974495" name="Seasons"/>
+			</field_ref>
+		</related_field>
+		<relation_extra entry_wildchar="false" entry_create="false" choice_field="0" entry_autofill="false">
+			<editor_relation_info via_point_x="-1" via_point_y="-1" prefers_left="false" smartlink="true">
+				<color red="255" green="255" blue="255" alpha="0"/>
+			</editor_relation_info>
+		</relation_extra>
+	</relation>
+	<relation uuid="90F90477D9CA9C43A87386EAF5725E2A" name_Nto1="RatingSeries" name_1toN="Link_15_return" auto_load_Nto1="false" auto_load_1toN="false" foreign_key="false" state="1">
+		<related_field kind="source">
+			<field_ref uuid="D4839C88CE8E3F48B56DB285CC11EFBC" name="SeriesID">
+				<table_ref uuid="70E1CD71E47DF544AFB8F51C6676AF8B" name="CensorshipRatings"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="B9F5CF7EDFFC9D4A98C80A9D6275812B" name="SeriesId">
+				<table_ref uuid="F9FD3C63B425194DA8FF706A66A53AA9" name="Series"/>
+			</field_ref>
+		</related_field>
+		<relation_extra entry_wildchar="false" entry_create="false" choice_field="0" entry_autofill="false">
+			<editor_relation_info via_point_x="-1" via_point_y="-1" prefers_left="false" smartlink="true">
+				<color red="255" green="255" blue="255" alpha="0"/>
+			</editor_relation_info>
+		</relation_extra>
+	</relation>
+	<relation uuid="DB51A4A035BA9C46BAC03BB11148F856" name_Nto1="PlaysInFeature" name_1toN="FeatureCast" auto_load_Nto1="false" auto_load_1toN="false" foreign_key="false" state="1">
+		<related_field kind="source">
+			<field_ref uuid="F3780176CEFDD24D85AB02281533BD1E" name="FeatureID">
+				<table_ref uuid="3E7FFA855145B0459041FE9677A7D598" name="FeatureCast"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="CF7B91F271968F4A8583DFE4BE7E6ABD" name="FeatureId">
+				<table_ref uuid="C838F85334D87A4BB70ECA42DD081627" name="Features"/>
+			</field_ref>
+		</related_field>
+		<relation_extra entry_wildchar="false" entry_create="false" choice_field="0" entry_autofill="false">
+			<editor_relation_info via_point_x="-1" via_point_y="-1" prefers_left="false" smartlink="true">
+				<color red="255" green="255" blue="255" alpha="0"/>
+			</editor_relation_info>
+		</relation_extra>
+	</relation>
+	<relation uuid="F9F0B77AD4576041ADFFAE1CB9955EC7" name_Nto1="CastMember" name_1toN="FeatureList" auto_load_Nto1="false" auto_load_1toN="false" foreign_key="false" state="1">
+		<related_field kind="source">
+			<field_ref uuid="720602A92B77544691F55E0D3F8A09F9" name="PeopleID">
+				<table_ref uuid="3E7FFA855145B0459041FE9677A7D598" name="FeatureCast"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="29D8E708910240488925C7661D246326" name="PeopleID">
+				<table_ref uuid="8C5B0F45B1D8A249B4465EEEEFECA0C0" name="People"/>
+			</field_ref>
+		</related_field>
+		<relation_extra entry_wildchar="false" entry_create="false" choice_field="0" entry_autofill="false">
+			<editor_relation_info via_point_x="-1" via_point_y="-1" prefers_left="true" smartlink="true">
+				<color red="255" green="255" blue="255" alpha="0"/>
+			</editor_relation_info>
+		</relation_extra>
+	</relation>
+	<relation uuid="1F96C6C914A8984EA65185F0E4BFB683" name_Nto1="ProducedBy" name_1toN="ProducedFeatures" auto_load_Nto1="false" auto_load_1toN="false" foreign_key="false" state="1">
+		<related_field kind="source">
+			<field_ref uuid="E70D8068C93E7A49896D292AF18084CB" name="ProdCompanyID">
+				<table_ref uuid="C838F85334D87A4BB70ECA42DD081627" name="Features"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="200E8C53CA29B0498EBF313D4335FFCE" name="CompanyID">
+				<table_ref uuid="1C22734F40955346924CAF5BD37812A5" name="Companies"/>
+			</field_ref>
+		</related_field>
+		<relation_extra entry_wildchar="false" entry_create="false" choice_field="0" entry_autofill="false">
+			<editor_relation_info via_point_x="-1" via_point_y="-1" prefers_left="false" smartlink="true">
+				<color red="255" green="255" blue="255" alpha="0"/>
+			</editor_relation_info>
+		</relation_extra>
+	</relation>
+	<index kind="regular" uuid="0302D88AC10E7D4FA1BFF1FA857645C7" type="7">
+		<field_ref uuid="75108E417465C94BA8157E9989FC2663" name="ProductionTitle">
+			<table_ref uuid="C838F85334D87A4BB70ECA42DD081627" name="Features"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="03A3C0EDE9C1EA4BAE6913D3644E1CB6" type="7">
+		<field_ref uuid="C7CD1713760C624CABBD83F2582D7899" name="GeneID">
+			<table_ref uuid="569CDBF13A8C6D4DB8A19AED449B0D90" name="ContentProfile"/>
+		</field_ref>
+	</index>
+	<index kind="keywords" uuid="04EC70F9AAE4D64280D07C17F2EC3EC3" type="3">
+		<field_ref uuid="BEC04D9D9F47AE45920C4D3C9EFC0CFA" name="MediumSynopsis">
+			<table_ref uuid="EDC4828002111C43B000FE50268BB9B8" name="DescriptiveMetadata"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="057DE39E74690442A77C1728F0CDF719" type="7">
+		<field_ref uuid="28BF279D2934EA42A12FCF8127CFDB8A" name="ShortTitle">
+			<table_ref uuid="EDC4828002111C43B000FE50268BB9B8" name="DescriptiveMetadata"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="0695690ABA5EC84B83EB86F08601B465" type="7">
+		<field_ref uuid="CB283EA8BD0BF84FAD1C87446CE9B321" name="GeneName">
+			<table_ref uuid="C91FC4F9F8C9004DA9ACA36FF0E51E68" name="GenomeMap"/>
+		</field_ref>
+	</index>
+	<index kind="keywords" uuid="070E1AA77E73DC4AAE58677812C0863F" type="3">
+		<field_ref uuid="247D0E19A4B4B94ABCFFB2774895C64E" name="Tagline">
+			<table_ref uuid="EDC4828002111C43B000FE50268BB9B8" name="DescriptiveMetadata"/>
+		</field_ref>
+	</index>
+	<index kind="keywords" uuid="0726B4A5C61EDA478EAAC19673B768FD" type="3">
+		<field_ref uuid="3A2D5F9C1A512049B35DAC2E6BC6DA52" name="Awards">
+			<table_ref uuid="8C5B0F45B1D8A249B4465EEEEFECA0C0" name="People"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="0738D9597242974183E88A5486F08978" type="7">
+		<field_ref uuid="51A978DAB3B6294AA1DBDF58641FA8A0" name="ExternalSystem">
+			<table_ref uuid="AC6218F8985C3646855E44AEBFC5384A" name="ShellMappings"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="084A734ECC00134ABE0C079211C25948" type="7">
+		<field_ref uuid="D90AA0DD37F4794094E18C8F581BFD69" name="MappedValue">
+			<table_ref uuid="AC6218F8985C3646855E44AEBFC5384A" name="ShellMappings"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="0925404BFEB8914BA5A02DFF722E2499" type="7">
+		<field_ref uuid="720602A92B77544691F55E0D3F8A09F9" name="PeopleID">
+			<table_ref uuid="3E7FFA855145B0459041FE9677A7D598" name="FeatureCast"/>
+		</field_ref>
+	</index>
+	<index kind="keywords" uuid="095E83F147292844B61C39FB35141B68" type="3">
+		<field_ref uuid="1F825AC32F0CF94CBAC9A3F0B1F15545" name="IMDBTitle">
+			<table_ref uuid="C838F85334D87A4BB70ECA42DD081627" name="Features"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="12799B8C9DAEF34FA4CFF57F36B3A891" type="7">
+		<field_ref uuid="6DE9946E2A336849956A4E2173E6DEEF" name="TimeStamp">
+			<table_ref uuid="C1EA1F0E16414F4D981247E2D9BE7FDD" name="SampleTable"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="1B96FF1804B4984A91907A03F6A3839C" type="7">
+		<field_ref uuid="C8050F365655584E8E7B85055F34B3A1" name="RecordID">
+			<table_ref uuid="AC6218F8985C3646855E44AEBFC5384A" name="ShellMappings"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="1CB4EE017486E043ADB4CEE634B1D856" type="7">
+		<field_ref uuid="1F825AC32F0CF94CBAC9A3F0B1F15545" name="IMDBTitle">
+			<table_ref uuid="C838F85334D87A4BB70ECA42DD081627" name="Features"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="1FBD1F2932E64642B20F76AB19FC4058" type="7">
+		<field_ref uuid="40B7B96BE6285445B8F70F469E278F74" name="PlayedCharacter">
+			<table_ref uuid="3E7FFA855145B0459041FE9677A7D598" name="FeatureCast"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="2060BC5D9391974F87475D25640AA750" type="7">
+		<field_ref uuid="EB5D223D953FEB408B569EAB2F44E584" name="ProdYear">
+			<table_ref uuid="C838F85334D87A4BB70ECA42DD081627" name="Features"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="2CE70A53B729C046AE43C4B9704B9E21" type="1">
+		<field_ref uuid="D441AD2CCC5DB4469160D3C25F080B62" name="Target">
+			<table_ref uuid="EDC4828002111C43B000FE50268BB9B8" name="DescriptiveMetadata"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="2D820A719DD54B43B4BFB4D05F863767" type="1">
+		<field_ref uuid="81184FB69B4A4A4DAD867EE580E1CC0B" name="Region">
+			<table_ref uuid="70E1CD71E47DF544AFB8F51C6676AF8B" name="CensorshipRatings"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="3056DA8B85081B4C8851021252F49039" type="7">
+		<field_ref uuid="4887B3F52042864998AE6BC61E3C59F9" name="ProdYear">
+			<table_ref uuid="F9FD3C63B425194DA8FF706A66A53AA9" name="Series"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="36AE00E7FBBEAF498024BE3D6BF4C5A2" type="7">
+		<field_ref uuid="B08F66BBED50B04C899ED87A8E2BF79A" name="NarrativeVector">
+			<table_ref uuid="F9FD3C63B425194DA8FF706A66A53AA9" name="Series"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="37A4D1966CFD3043869F8AAAA32DB568" type="7">
+		<field_ref uuid="B88D2473B95A3E4B9140C9915F751348" name="AvailableInUI">
+			<table_ref uuid="C91FC4F9F8C9004DA9ACA36FF0E51E68" name="GenomeMap"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="3B4FDA77E1B73444996AC87EEBDA64B0" type="7">
+		<field_ref uuid="49BB77B95AC1EF438AB6B4CCEBCDABC7" name="CountryOfOrigin">
+			<table_ref uuid="C838F85334D87A4BB70ECA42DD081627" name="Features"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="3C39BAA05D38A941A0825D2D80402471" type="7">
+		<field_ref uuid="D6BE1CD232FDD34A9E75D6233AAFCB1D" name="FirstName">
+			<table_ref uuid="8C5B0F45B1D8A249B4465EEEEFECA0C0" name="People"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="3FB9F9FDD8BCEA4AA5D200977501C82B" type="7">
+		<field_ref uuid="43382256974CFB448E9DD23ACD201F75" name="RecordID">
+			<table_ref uuid="3E7FFA855145B0459041FE9677A7D598" name="FeatureCast"/>
+		</field_ref>
+	</index>
+	<index kind="keywords" uuid="42E58D4A05EC8A479EA5179650207223" type="3">
+		<field_ref uuid="0DC646725A291E42AA535DE1B2F4F121" name="ShortSynopsis">
+			<table_ref uuid="EDC4828002111C43B000FE50268BB9B8" name="DescriptiveMetadata"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="450EEAE1D868B24F8B5F3A741B199B08" type="7">
+		<field_ref uuid="8B2641B460EFCB4CA1681F90EBBBF313" name="FeatureID">
+			<table_ref uuid="70E1CD71E47DF544AFB8F51C6676AF8B" name="CensorshipRatings"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="4537068C14A56F4EBB23EDD36FEDF8C4" type="7">
+		<field_ref uuid="136695A713B28340A810989590D6BEB4" name="RecordID">
+			<table_ref uuid="C1EA1F0E16414F4D981247E2D9BE7FDD" name="SampleTable"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="468D92B649A1AB408E6945B151851AEE" type="7">
+		<field_ref uuid="3DD18D0B7066954184AA0D12CE48FB2C" name="CuratorID">
+			<table_ref uuid="569CDBF13A8C6D4DB8A19AED449B0D90" name="ContentProfile"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="46D0CA50171BFA4F92235CFB70915E65" type="7">
+		<field_ref uuid="6E80D3301DB25045A53CA41BE27EB455" name="LastName">
+			<table_ref uuid="8C5B0F45B1D8A249B4465EEEEFECA0C0" name="People"/>
+		</field_ref>
+	</index>
+	<index kind="keywords" uuid="49A40B37F1BE8C4785C5203598D4BA0A" type="3">
+		<field_ref uuid="49BB77B95AC1EF438AB6B4CCEBCDABC7" name="CountryOfOrigin">
+			<table_ref uuid="C838F85334D87A4BB70ECA42DD081627" name="Features"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="4DB1CC5D6C7F9843A8228FD89CE4CABD" type="1">
+		<field_ref uuid="C180E17867586C49A58151612B497AAA" name="Vector">
+			<table_ref uuid="C91FC4F9F8C9004DA9ACA36FF0E51E68" name="GenomeMap"/>
+		</field_ref>
+	</index>
+	<index kind="keywords" uuid="4F52E0E69AFDDA47BFA55160658F635D" type="3">
+		<field_ref uuid="3CD949738298284BBF0756C672A2FF32" name="LongSynopsis">
+			<table_ref uuid="EDC4828002111C43B000FE50268BB9B8" name="DescriptiveMetadata"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="4FBE24323C0EAA4CBD31D1FD76DB58AD" type="7">
+		<field_ref uuid="2F3DB842EBB3B6478E1BC67E96A3B086" name="IMDBTitle">
+			<table_ref uuid="F9FD3C63B425194DA8FF706A66A53AA9" name="Series"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="56A6C9F98C20CA41864B0D23A3780BE6" type="7">
+		<field_ref uuid="5FED676C462A1B41BD5FDA4946E1721F" name="OrigLanguages">
+			<table_ref uuid="C838F85334D87A4BB70ECA42DD081627" name="Features"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="587F39827177D74E8E38F9D55771D1BE" type="7">
+		<field_ref uuid="FBAFA4ED094C9E4ABE425E4A5F6BC5B7" name="FeatureID">
+			<table_ref uuid="569CDBF13A8C6D4DB8A19AED449B0D90" name="ContentProfile"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="5C5D37933FFFD145946F9A6DDCA4093E" type="7">
+		<field_ref uuid="824A67BD15233244A064EDACB3A22D17" name="SeasonID">
+			<table_ref uuid="EDC4828002111C43B000FE50268BB9B8" name="DescriptiveMetadata"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="5FF63CD136573647AA99A44A295A4C27" type="7">
+		<field_ref uuid="200E8C53CA29B0498EBF313D4335FFCE" name="CompanyID">
+			<table_ref uuid="1C22734F40955346924CAF5BD37812A5" name="Companies"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="651BB22B9C54EC47BDCE3EC791EE2810" type="7">
+		<field_ref uuid="80908D1575D1D141854C511FC8897927" name="RecordID">
+			<table_ref uuid="569CDBF13A8C6D4DB8A19AED449B0D90" name="ContentProfile"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="66B954A505891C49809F8EF67638F9B5" type="7">
+		<field_ref uuid="D4839C88CE8E3F48B56DB285CC11EFBC" name="SeriesID">
+			<table_ref uuid="70E1CD71E47DF544AFB8F51C6676AF8B" name="CensorshipRatings"/>
+		</field_ref>
+	</index>
+	<index kind="keywords" uuid="69336A89E629D94987C453BF5F8A31FF" type="3">
+		<field_ref uuid="907D8DA1C249EF4187A5839C8F83B2A7" name="NormalFullName">
+			<table_ref uuid="3E7FFA855145B0459041FE9677A7D598" name="FeatureCast"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="6C63F9B4A33ADA48AF3E37B14FA83261" type="7">
+		<field_ref uuid="B03CD6651D185E45A3FAAE4580C6CF90" name="Reference">
+			<table_ref uuid="AC6218F8985C3646855E44AEBFC5384A" name="ShellMappings"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="705D7346B6878444A063FAD247293E46" type="7">
+		<field_ref uuid="50FE97292334D84FA7BCAB6A47117491" name="IMDBID">
+			<table_ref uuid="8C5B0F45B1D8A249B4465EEEEFECA0C0" name="People"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="720B3A9A49C28B4CB210016D62D0A7AE" type="7">
+		<field_ref uuid="BEFB9A4A20C5524BA9B080E90956536B" name="LastUpdateDate">
+			<table_ref uuid="C1EA1F0E16414F4D981247E2D9BE7FDD" name="SampleTable"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="7292726D80870947BF2F815A32244246" type="7">
+		<field_ref uuid="B81C46C8C7D938478C95448872660667" name="ProdYear">
+			<table_ref uuid="F0B5B6FC21C3B14888D902E3E7974495" name="Seasons"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="7AA98A90B205574A9A3BA61D176C30BF" type="7">
+		<field_ref uuid="9BE03C65F0052F4E8C8C82F1D4C8D19D" name="ThemeVector">
+			<table_ref uuid="F9FD3C63B425194DA8FF706A66A53AA9" name="Series"/>
+		</field_ref>
+	</index>
+	<index kind="keywords" uuid="7DD74B9316C889428A0482820A36399D" type="3">
+		<field_ref uuid="A0E10CAB3494714796F4E1515E143CCD" name="ProductionTitle">
+			<table_ref uuid="F9FD3C63B425194DA8FF706A66A53AA9" name="Series"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="7F5BC4846EF61940AE3359CD7215B1CA" type="7">
+		<field_ref uuid="AA3C328CCB7C3049A13D919E5336FBB8" name="RecordId">
+			<table_ref uuid="70E1CD71E47DF544AFB8F51C6676AF8B" name="CensorshipRatings"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="7F63E17AB4E2BF42B60F7E24CE70F226" type="7">
+		<field_ref uuid="5C100ECA75E56D4086F3D152187D93F2" name="SeriesID">
+			<table_ref uuid="C838F85334D87A4BB70ECA42DD081627" name="Features"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="8256BE0C55B06D41933F9EF138080746" type="7">
+		<field_ref uuid="89CF95B335D2EA45BF498F7773FA5CE6" name="CreationDate">
+			<table_ref uuid="C1EA1F0E16414F4D981247E2D9BE7FDD" name="SampleTable"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="83FB0F5E6C6E75449B55FD88FED6FE44" type="7">
+		<field_ref uuid="E70D8068C93E7A49896D292AF18084CB" name="ProdCompanyID">
+			<table_ref uuid="C838F85334D87A4BB70ECA42DD081627" name="Features"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="8545DFDEFC2616418B9D51169DA998D3" type="7">
+		<field_ref uuid="3804D4A11254784B89BA5F65BE8C0129" name="FeatureID">
+			<table_ref uuid="EDC4828002111C43B000FE50268BB9B8" name="DescriptiveMetadata"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="868DA8CC8402EB4389B7A01F055EFA76" type="7">
+		<field_ref uuid="57E6DCE8B4002A4D9FA5EFE3A928EEEC" name="ExternalValue">
+			<table_ref uuid="AC6218F8985C3646855E44AEBFC5384A" name="ShellMappings"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="8AC73CE88676EB458E36CBE51B7F7AA8" type="1">
+		<field_ref uuid="8DFE321A3D038744BCF4AA702ECD17EC" name="MDLanguage">
+			<table_ref uuid="EDC4828002111C43B000FE50268BB9B8" name="DescriptiveMetadata"/>
+		</field_ref>
+	</index>
+	<index kind="keywords" uuid="8CB0D933359B6B4DB0477E46AD2AAE84" type="3">
+		<field_ref uuid="2F3DB842EBB3B6478E1BC67E96A3B086" name="IMDBTitle">
+			<table_ref uuid="F9FD3C63B425194DA8FF706A66A53AA9" name="Series"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="8F3B8885668D3F4582BFC5E62827AABF" type="7">
+		<field_ref uuid="0601AB6F3DCC0946BD171BB8F0DA3EC2" name="RecordId">
+			<table_ref uuid="EDC4828002111C43B000FE50268BB9B8" name="DescriptiveMetadata"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="90A6AF2EF6694845AFB5520AB3E2B3D7" type="7">
+		<field_ref uuid="0FFA4994D57A8F47A17909B5CD5AC750" name="DOB">
+			<table_ref uuid="8C5B0F45B1D8A249B4465EEEEFECA0C0" name="People"/>
+		</field_ref>
+	</index>
+	<index kind="keywords" uuid="912C16826F042B4AB3C14C05ADE2210C" type="3">
+		<field_ref uuid="8ABEB43E230F724DA5D056DBFC005BC1" name="LongTitle">
+			<table_ref uuid="EDC4828002111C43B000FE50268BB9B8" name="DescriptiveMetadata"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="91DE005DBF3CBE46837956C5188BF56A" type="7">
+		<field_ref uuid="765457642F9E334BAF909CD68B79CCD6" name="StyleVector">
+			<table_ref uuid="F9FD3C63B425194DA8FF706A66A53AA9" name="Series"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="93EC22F0AE42294ABAF9BFD39AC10FFB" type="7">
+		<field_ref uuid="1580EB73DD69D54098E48DCC0F8AA265" name="ShortName">
+			<table_ref uuid="1C22734F40955346924CAF5BD37812A5" name="Companies"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="9A0386659675BF4FB9642F367F2D9924" type="7">
+		<field_ref uuid="FD6DD1D085CC384A9978D5E33259FF67" name="ListName">
+			<table_ref uuid="F62A7F30C3511141AEFB92CA8E41C4F8" name="ShellLists"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="9F86F97E5ADE8043A2C8EC9CE5FC5478" type="7">
+		<field_ref uuid="8C43C3CAEE321649AE327F246EA07B1D" name="ProductionTitle">
+			<table_ref uuid="F0B5B6FC21C3B14888D902E3E7974495" name="Seasons"/>
+		</field_ref>
+	</index>
+	<index kind="keywords" uuid="A0EAFB0E4050694490A7F1C5260ECDCF" type="3">
+		<field_ref uuid="BEF233132A0F614DAA600ED2C42F2F85" name="AbbrTitle">
+			<table_ref uuid="EDC4828002111C43B000FE50268BB9B8" name="DescriptiveMetadata"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="A173EF710CFDE34CA0AADE2CFE74BEA0" type="7">
+		<field_ref uuid="27D9C7F14DB4F548B79A90BA4ACE5A84" name="GeneId">
+			<table_ref uuid="C91FC4F9F8C9004DA9ACA36FF0E51E68" name="GenomeMap"/>
+		</field_ref>
+	</index>
+	<index kind="keywords" uuid="A2E02A2806FE414ABC0546268E894BD3" type="3">
+		<field_ref uuid="CF7A708E6CF2C44AA9F2341AA233BD4A" name="CompanyRoles">
+			<table_ref uuid="1C22734F40955346924CAF5BD37812A5" name="Companies"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="A2F55765BA3669478DC9C61E0B5B0A59" type="1">
+		<field_ref uuid="4FCA2BBC4339AF449BEE60591F9574AC" name="Cluster">
+			<table_ref uuid="C91FC4F9F8C9004DA9ACA36FF0E51E68" name="GenomeMap"/>
+		</field_ref>
+	</index>
+	<index kind="keywords" uuid="AECCC18A60A7C846A966509CCA998773" type="3">
+		<field_ref uuid="1884112ECC72A847A8B65D8CE16F0754" name="MarketTitle">
+			<table_ref uuid="EDC4828002111C43B000FE50268BB9B8" name="DescriptiveMetadata"/>
+		</field_ref>
+	</index>
+	<index kind="keywords" uuid="B0C0D768B00E0449905C205B3DE6A3B4" type="3">
+		<field_ref uuid="0B86B981D55E644D9EECFDE7ECD5984D" name="FeatureCast">
+			<table_ref uuid="C838F85334D87A4BB70ECA42DD081627" name="Features"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="B79D21D7CD6E1A4C9BF3E94B90F574F3" type="7">
+		<field_ref uuid="56DF99C838772B44AC63402F6B839178" name="SeasonId">
+			<table_ref uuid="F0B5B6FC21C3B14888D902E3E7974495" name="Seasons"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="B7A1B60A5D6C414C9B424D99005B46FB" type="7">
+		<field_ref uuid="1DD0040C6C24424386876E1A3F8D21E4" name="SeriesID">
+			<table_ref uuid="569CDBF13A8C6D4DB8A19AED449B0D90" name="ContentProfile"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="B7A98A1481209547929737ACED2E2E22" type="7">
+		<field_ref uuid="F3780176CEFDD24D85AB02281533BD1E" name="FeatureID">
+			<table_ref uuid="3E7FFA855145B0459041FE9677A7D598" name="FeatureCast"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="B87DA47173358D47BA148DF08D602275" type="7">
+		<field_ref uuid="06F129C8B7B51A42924BE535F621E57B" name="CoordinateValue">
+			<table_ref uuid="569CDBF13A8C6D4DB8A19AED449B0D90" name="ContentProfile"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="B9F7891B2F8691449516B70550E367E0" type="7">
+		<field_ref uuid="F85D4A230860934FB1BDF8FA21EE1C62" name="UIName">
+			<table_ref uuid="C91FC4F9F8C9004DA9ACA36FF0E51E68" name="GenomeMap"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="BE981DF47402124A9B3FF18CC0F63709" type="7">
+		<field_ref uuid="D24EAE43B28EB643840F5CC8A6A26FC6" name="SeriesID">
+			<table_ref uuid="F0B5B6FC21C3B14888D902E3E7974495" name="Seasons"/>
+		</field_ref>
+	</index>
+	<index kind="keywords" uuid="C5B2B9B7F58D7E4A9758C5D0E74657C2" type="3">
+		<field_ref uuid="AA18D22A1A4F8C4A94F4B84D44386502" name="IndexedFullName">
+			<table_ref uuid="3E7FFA855145B0459041FE9677A7D598" name="FeatureCast"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="C7805BF87F18114A91A751DFB7E99387" type="7">
+		<field_ref uuid="126583395A843C4E8FD2123F9F395208" name="ElementShortValue">
+			<table_ref uuid="F62A7F30C3511141AEFB92CA8E41C4F8" name="ShellLists"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="CA3152EB5226CF479BF7AC845CA1DFF4" type="7">
+		<field_ref uuid="E88FF2466F6D8E4DB44742A9347873D0" name="IMDBID">
+			<table_ref uuid="F0B5B6FC21C3B14888D902E3E7974495" name="Seasons"/>
+		</field_ref>
+	</index>
+	<index kind="keywords" uuid="CC1E5F786EB5A844A77CE259EDFF8B57" type="3">
+		<field_ref uuid="0E21302FFAE9174DA8DBA5356DF960A4" name="ContentDescriptors">
+			<table_ref uuid="70E1CD71E47DF544AFB8F51C6676AF8B" name="CensorshipRatings"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="CD19DF15C5C986468FC51F22AF07C07F" type="7">
+		<field_ref uuid="B9F5CF7EDFFC9D4A98C80A9D6275812B" name="SeriesId">
+			<table_ref uuid="F9FD3C63B425194DA8FF706A66A53AA9" name="Series"/>
+		</field_ref>
+	</index>
+	<index kind="keywords" uuid="CE236C9B0E56B740BE45104D93BE1BE5" type="3">
+		<field_ref uuid="697DF060B744BA4D8030D97AD8486C9D" name="Genres">
+			<table_ref uuid="EDC4828002111C43B000FE50268BB9B8" name="DescriptiveMetadata"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="CFCED8C4659AF9488E9BD181F17A676D" type="7">
+		<field_ref uuid="3D7285379B34CB469CF8F1D926A1DCE4" name="ExecutionVector">
+			<table_ref uuid="F9FD3C63B425194DA8FF706A66A53AA9" name="Series"/>
+		</field_ref>
+	</index>
+	<index kind="keywords" uuid="D29FDCFB6651BE47816E7170AAEAE538" type="3">
+		<field_ref uuid="28BF279D2934EA42A12FCF8127CFDB8A" name="ShortTitle">
+			<table_ref uuid="EDC4828002111C43B000FE50268BB9B8" name="DescriptiveMetadata"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="D3E756B8E63D0B45B351FCF425E6F30F" type="7">
+		<field_ref uuid="6696D1269B22CB459526E392F3C212E3" name="IMDBTitle">
+			<table_ref uuid="F0B5B6FC21C3B14888D902E3E7974495" name="Seasons"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="D4294949939E854280811498A2000CA1" type="7">
+		<field_ref uuid="CF7B91F271968F4A8583DFE4BE7E6ABD" name="FeatureId">
+			<table_ref uuid="C838F85334D87A4BB70ECA42DD081627" name="Features"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="DCA76171E9CEA94F8C4D13A38627D7C0" type="7">
+		<field_ref uuid="FE55909A5449124B980081E590CBE06D" name="SeasonID">
+			<table_ref uuid="569CDBF13A8C6D4DB8A19AED449B0D90" name="ContentProfile"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="E0E9B1E773CF694685174EF1F76B7281" type="7">
+		<field_ref uuid="56DFEF573E156646A0CC5332FD30364E" name="IMDBID">
+			<table_ref uuid="C838F85334D87A4BB70ECA42DD081627" name="Features"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="E2787A85F7990040B9C2EAD9A6A36EEE" type="7">
+		<field_ref uuid="A0E10CAB3494714796F4E1515E143CCD" name="ProductionTitle">
+			<table_ref uuid="F9FD3C63B425194DA8FF706A66A53AA9" name="Series"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="E31A0BF5F163264EB9158378556EAF0C" type="7">
+		<field_ref uuid="86C910FE2D984D4DABAD5454568C95F5" name="SeasonID">
+			<table_ref uuid="70E1CD71E47DF544AFB8F51C6676AF8B" name="CensorshipRatings"/>
+		</field_ref>
+	</index>
+	<index kind="keywords" uuid="E378BEC949D825489C55C19AD3C7E9D5" type="3">
+		<field_ref uuid="75108E417465C94BA8157E9989FC2663" name="ProductionTitle">
+			<table_ref uuid="C838F85334D87A4BB70ECA42DD081627" name="Features"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="E50BC38004E02443ADF898829A8EE544" type="7">
+		<field_ref uuid="0A9520DB1F9F52479C20E5018F70FB8B" name="SeriesID">
+			<table_ref uuid="EDC4828002111C43B000FE50268BB9B8" name="DescriptiveMetadata"/>
+		</field_ref>
+	</index>
+	<index kind="keywords" uuid="F0198658D792BB4F95CC9D46224E0345" type="3">
+		<field_ref uuid="6DE9946E2A336849956A4E2173E6DEEF" name="TimeStamp">
+			<table_ref uuid="C1EA1F0E16414F4D981247E2D9BE7FDD" name="SampleTable"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="F333880326E77248B5CB4D00545A7313" type="7">
+		<field_ref uuid="93EECDE73CE61344A34151044DCB42C7" name="IMDBID">
+			<table_ref uuid="F9FD3C63B425194DA8FF706A66A53AA9" name="Series"/>
+		</field_ref>
+	</index>
+	<index kind="keywords" uuid="F6B4FB1406BCDD489FD7F49FDAFF3EEF" type="3">
+		<field_ref uuid="5FED676C462A1B41BD5FDA4946E1721F" name="OrigLanguages">
+			<table_ref uuid="C838F85334D87A4BB70ECA42DD081627" name="Features"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="F81BD6330E5B9347B62F449E79CBC61E" type="7">
+		<field_ref uuid="29D8E708910240488925C7661D246326" name="PeopleID">
+			<table_ref uuid="8C5B0F45B1D8A249B4465EEEEFECA0C0" name="People"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="F82B3C07D35CF6428BF9E6FC75873E77" type="7">
+		<field_ref uuid="B537AE112713F34A9890606EA39C48FE" name="SeasonID">
+			<table_ref uuid="C838F85334D87A4BB70ECA42DD081627" name="Features"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="FB462D52DBD84C43AC9304DD00EE910A" type="7">
+		<field_ref uuid="5D00C08770308049B80C6BCE19CE06D0" name="ContentVector">
+			<table_ref uuid="F9FD3C63B425194DA8FF706A66A53AA9" name="Series"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="FB56301FDA39F945B70D82C02065F3EC" type="7">
+		<field_ref uuid="ADA39B58F8F6204EBC8328ED7884FF57" name="CensorshipRating">
+			<table_ref uuid="C838F85334D87A4BB70ECA42DD081627" name="Features"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="FEBAB77C106A9447AF83D0F80A87EF15" type="7">
+		<field_ref uuid="AE55196243333444865535862474869C" name="SubReference">
+			<table_ref uuid="AC6218F8985C3646855E44AEBFC5384A" name="ShellMappings"/>
+		</field_ref>
+	</index>
+	<base_extra __stringCompHash="icu:4.8.0" __keywordBuildingHash="icu:4.8.0" data_file_path="\MovieGenomePOC.4DD" source_code_stamp="48">
+		<journal_file journal_file_enabled="true"/>
+	</base_extra>
+</base>
